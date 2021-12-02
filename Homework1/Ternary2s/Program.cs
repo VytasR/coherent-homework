@@ -91,14 +91,20 @@ namespace Ternary2s
 
         static void Main(string[] args)
         {
-            int rangeStart = InputRangeStart();
-            int rangeEnd = InputRangeEnd();
+            bool endApp = false;
 
-            var intsWithTwoTernary2s = FindTwoTernary2s(rangeStart, rangeEnd);
+            while (!endApp)
+            {
+                int rangeStart = InputRangeStart();
+                int rangeEnd = InputRangeEnd();
 
-            OutputIntsWithTernary(intsWithTwoTernary2s);
+                var intsWithTwoTernary2s = FindTwoTernary2s(rangeStart, rangeEnd);
 
-            Console.ReadKey();
+                OutputIntsWithTernary(intsWithTwoTernary2s);
+
+                endApp = InputEndApp();                
+            }
+            
         }
     }
 }
