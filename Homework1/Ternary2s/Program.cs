@@ -9,6 +9,13 @@ namespace Ternary2s
     internal class Program
     {
 
+        // This method inputs from console first integer to define the range. 
+        static int InputRangeStart()
+        {
+            Console.Write("Please enter first integer in the range: ");
+            return Int32.Parse(Console.ReadLine());
+        }
+
         // This method inputs a dictionary with integer as a key and its ternary representation in string as a value
         // and outputs it to console.
         static void OutputIntsWithTernary (Dictionary<int, string> intsWithTwoTernary2s)
