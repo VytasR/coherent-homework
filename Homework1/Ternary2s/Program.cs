@@ -84,6 +84,10 @@ namespace Ternary2s
 
         static void Main(string[] args)
         {
+            int rangeStart = InputRangeStart();
+            int rangeEnd = InputRangeEnd();
+
+           
         }
     }
 }
