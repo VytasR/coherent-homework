@@ -89,7 +89,9 @@ namespace Ternary2s
 
             var intsWithTwoTernary2s = FindTwoTernary2s(rangeStart, rangeEnd);
 
-            
+            OutputIntsWithTernary(intsWithTwoTernary2s);
+
+            Console.ReadKey();
         }
     }
 }
