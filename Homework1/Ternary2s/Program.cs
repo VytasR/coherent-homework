@@ -9,6 +9,20 @@ namespace Ternary2s
     internal class Program
     {
 
+        // This method inputs integer range limits and finds integers with exactly two ternary 2's.
+        // Returns a dictionary with integer as a key and its ternary representation in string as a value.
+        static Dictionary<int, string> FindTwoTernary2s(int rangeStart, int rangeEnd)
+        {
+            var intsWithTwoTernary2s = new Dictionary<int, string>();
+
+            for (int i = rangeStart; i <= rangeEnd; i++)
+            {
+                if (AreTwoTernary2s(i))
+                    intsWithTwoTernary2s.Add(i, ConvertDecimalToTernary(i));
+            }
+            return intsWithTwoTernary2s;
+        }
+
         // This method inputs integer and checks if a number contains exactly two ternary 2's. Returns true if it does. 
         static bool AreTwoTernary2s(int number)
         {
