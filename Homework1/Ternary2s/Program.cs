@@ -26,6 +26,7 @@ namespace Ternary2s
         // This method inputs from console first integer to define the range. 
         static int InputRangeStart()
         {
+            Console.WriteLine("\n");
             Console.Write("Please enter first integer in the range: ");
             return Int32.Parse(Console.ReadLine());
         }
@@ -103,8 +104,7 @@ namespace Ternary2s
                 OutputIntsWithTernary(intsWithTwoTernary2s);
 
                 endApp = InputEndApp();                
-            }
-            
+            }            
         }
     }
 }
