@@ -9,6 +9,16 @@ namespace Ternary2s
     internal class Program
     {
 
+        // This method inputs a dictionary with integer as a key and its ternary representation in string as a value
+        // and outputs it to console.
+        static void OutputIntsWithTernary (Dictionary<int, string> intsWithTwoTernary2s)
+        {
+            foreach (KeyValuePair<int, string> keyValuePair in intsWithTwoTernary2s)
+            {
+                Console.WriteLine($"Int: {keyValuePair.Key}, ternary: {keyValuePair.Value}");
+            }
+        }
+
         // This method inputs integer range limits and finds integers with exactly two ternary 2's.
         // Returns a dictionary with integer as a key and its ternary representation in string as a value.
         static Dictionary<int, string> FindTwoTernary2s(int rangeStart, int rangeEnd)
