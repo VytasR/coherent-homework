@@ -84,12 +84,6 @@ namespace Ternary2s
 
         static void Main(string[] args)
         {
-            bool endApp = false;
-
-            while (!endApp)
-            {
-
-            }
         }
     }
 }
