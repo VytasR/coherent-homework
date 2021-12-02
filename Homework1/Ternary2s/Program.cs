@@ -88,8 +88,7 @@ namespace Ternary2s
 
             while (!endApp)
             {
-                int rangeStart = InputRangeStart();
-                int rangeEnd = InputRangeEnd();
+
             }
         }
     }
