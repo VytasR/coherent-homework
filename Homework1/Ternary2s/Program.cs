@@ -8,6 +8,12 @@ namespace Ternary2s
 {
     internal class Program
     {
+        /*
+         * This program reads integer range limits from console and
+         * outputs to console the numbers with exactly two ternary 2's 
+         * from the defined range.
+         */
+
         // This method request user if they want to continue using the app. Returns true if they do.
         static bool InputEndApp()
         {
