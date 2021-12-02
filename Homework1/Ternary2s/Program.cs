@@ -9,6 +9,22 @@ namespace Ternary2s
     internal class Program
     {
 
+        // This method inputs integer and checks if a number contains exactly two ternary 2's. Returns true if it does. 
+        static bool AreTwoTernary2s(int number)
+        {
+            int quotient = Math.Abs(number);
+            int twosCounter = 0;
+
+            while (quotient != 0)
+            {
+                if (quotient % 3 == 2) twosCounter++;
+                if (twosCounter > 2) break;
+                quotient /= 3;
+            }
+
+            return twosCounter == 2;            
+        }
+
         // This method inputs integer and converts it to ternary numeral system. Returns a string.
         static string ConvertDecimalToTernary (int number)
         {
