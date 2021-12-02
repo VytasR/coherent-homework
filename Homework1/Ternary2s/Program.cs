@@ -87,7 +87,9 @@ namespace Ternary2s
             int rangeStart = InputRangeStart();
             int rangeEnd = InputRangeEnd();
 
-           
+            var intsWithTwoTernary2s = FindTwoTernary2s(rangeStart, rangeEnd);
+
+            
         }
     }
 }
