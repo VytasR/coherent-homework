@@ -9,6 +9,13 @@ namespace Ternary2s
     internal class Program
     {
 
+        // This method inputs from console last integer to define the range
+        static int InputRangeEnd()
+        {
+            Console.Write("Please enter last integer in the range: ");
+            return Int32.Parse(Console.ReadLine());
+        }
+
         // This method inputs from console first integer to define the range. 
         static int InputRangeStart()
         {
