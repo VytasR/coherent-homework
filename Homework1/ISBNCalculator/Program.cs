@@ -16,7 +16,7 @@ namespace ISBNCalculator
         // Reads first ISBN nine digits from console and returns it as a string.
         static string InputIsbnNineDigits()
         {
-            Console.Write("\nPlease enter first 9 digits of ISBN (or enter Q to quit): ");
+            Console.Write("\nPlease enter first 9 digits of ISBN: ");
             return Console.ReadLine();
         }
 
@@ -54,13 +54,18 @@ namespace ISBNCalculator
 
         static void Main(string[] args)
         {
-            string isbnNineDigits = InputIsbnNineDigits();
+            bool endApp = false;
 
-            string checkDigit = CalculateIsbnCheckDigit(isbnNineDigits);
+            while(!endApp)
+            {
+                string isbnNineDigits = InputIsbnNineDigits();
 
-            OutputIsbn(isbnNineDigits, checkDigit);
+                string checkDigit = CalculateIsbnCheckDigit(isbnNineDigits);
 
-            Console.ReadKey();
+                OutputIsbn(isbnNineDigits, checkDigit);
+
+                endApp = InputEndApp();
+            }            
         }
     }
 }
