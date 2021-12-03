@@ -44,6 +44,14 @@ namespace ISBNCalculator
             Console.WriteLine($"Calculated ISBN is {isbnNineDigits}-{checkDigit}");
         }
 
+        // Ask user if they want to continue using the app. Returns true if they do.
+        static bool InputEndApp()
+        {
+            Console.WriteLine("-------------------------------");
+            Console.Write("Press 'q' and Enter to close the app, or press any other key and Enter to continue: ");
+            return (Console.ReadLine() == "q");
+        }
+
         static void Main(string[] args)
         {
             string isbnNineDigits = InputIsbnNineDigits();
