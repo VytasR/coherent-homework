@@ -41,6 +41,20 @@ namespace ArraySummator
             return intArray;
         }
 
+        // Finds index of smallest (leftmost if there are several) element of the array.
+        public int FindIndexOfSmallest(int[] array)
+        {
+            int indexOfSmallest = 0;
+
+            for (int index = 1; index < array.Length; index++)
+            {
+                if (array[index] < array[indexOfSmallest])
+                    indexOfSmallest = index;
+            }
+
+            return indexOfSmallest;
+        }
+
         static void Main(string[] args)
         {
         }
