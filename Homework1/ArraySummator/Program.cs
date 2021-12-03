@@ -20,6 +20,8 @@ namespace ArraySummator
             var arrayLength = 0;
             var isArrayLengthAtLeastTwo = false;
 
+            Console.WriteLine("\n");
+
             while (!isArrayLengthAtLeastTwo)
             {
                 Console.Write("Please enter array length (min 2): ");
