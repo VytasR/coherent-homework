@@ -55,6 +55,20 @@ namespace ArraySummator
             return indexOfSmallest;
         }
 
+        // Finds index of largest (rightmost if there are several) element of the array.
+        public int FindIndexOfLargest(int[] array)
+        {
+            int indexOfLargest = 0;
+
+            for (int index = 1; index < array.Length; index++)
+            {
+                if (array[index] >= array[indexOfLargest])
+                    indexOfLargest = index;
+            }
+
+            return indexOfLargest;
+        }
+
         static void Main(string[] args)
         {
         }
