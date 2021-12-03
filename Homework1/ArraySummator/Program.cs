@@ -69,6 +69,25 @@ namespace ArraySummator
             return indexOfLargest;
         }
 
+        // Calculates the sum of the array elements located between
+        // the smallest element in the array (the leftmost element if there are several)
+        // and the largest element (the rightmost element if there are several)
+        public int SumBetweenSmallestAndLargest(int[] array)
+        {
+            var indexOfSmallest = FindIndexOfSmallest(array);
+            var indexOfLargest = FindIndexOfLargest(array);
+            var sum = 0;
+
+            if (indexOfSmallest < indexOfLargest)
+                for (int index = indexOfSmallest; index <= indexOfLargest; index++)
+                    sum += array[index];
+            else
+                for (int index = indexOfLargest; index <= indexOfSmallest; index++)
+                    sum += array[index];
+
+            return sum;
+        }
+
         static void Main(string[] args)
         {
         }
