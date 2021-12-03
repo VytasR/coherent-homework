@@ -94,6 +94,14 @@ namespace ArraySummator
             Console.WriteLine($"The sum of elements located between the smallest element and the largest element in the array = {sum}");
         }
 
+        // Ask user if they want to continue using the app. Returns true if they do.
+        static bool InputEndApp()
+        {
+            Console.WriteLine("-------------------------------");
+            Console.Write("Press 'q' and Enter to close the app, or press any other key and Enter to continue: ");
+            return (Console.ReadLine() == "q");
+        }
+
         static void Main(string[] args)
         {
             int[] intArray = InputIntArray();
