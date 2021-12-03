@@ -46,6 +46,13 @@ namespace ISBNCalculator
 
         static void Main(string[] args)
         {
+            string isbnNineDigits = InputIsbnNineDigits();
+
+            string checkDigit = CalculateIsbnCheckDigit(isbnNineDigits);
+
+            OutputIsbn(isbnNineDigits, checkDigit);
+
+            Console.ReadKey();
         }
     }
 }
