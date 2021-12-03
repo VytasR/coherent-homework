@@ -96,6 +96,13 @@ namespace ArraySummator
 
         static void Main(string[] args)
         {
+            int[] intArray = InputIntArray();
+
+            int sumBetweenSmallestAndLargest = SumBetweenSmallestAndLargest(intArray);
+
+            OutputSumBetweenSmallestAndLargest(sumBetweenSmallestAndLargest);
+
+            Console.ReadKey();
         }
     }
 }
