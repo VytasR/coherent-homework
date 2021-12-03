@@ -88,6 +88,12 @@ namespace ArraySummator
             return sum;
         }
 
+        // Outputs to console the sum of elements located between the smallest element and the largest element in the array
+        static void OutputSumBetweenSmallestAndLargest(int sum)
+        {
+            Console.WriteLine($"The sum of elements located between the smallest element and the largest element in the array = {sum}");
+        }
+
         static void Main(string[] args)
         {
         }
