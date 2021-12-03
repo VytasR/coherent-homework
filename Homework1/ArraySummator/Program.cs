@@ -22,6 +22,7 @@ namespace ArraySummator
 
             Console.WriteLine("\n");
 
+            // Input array lenght
             while (!isArrayLengthAtLeastTwo)
             {
                 Console.Write("Please enter array length (min 2): ");
@@ -35,6 +36,7 @@ namespace ArraySummator
 
             int[] intArray = new int[arrayLength];
 
+            // Input array elements
             for (int i = 0; i < arrayLength; i++)
             {
                 Console.Write($"Please enter array element No. {i}: ");
