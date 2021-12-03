@@ -38,6 +38,12 @@ namespace ISBNCalculator
             return checkDigit == 10 ? "X" : checkDigit.ToString();
         }
 
+        // Inputs ISBN first nine digits, check digit and writes full ISBN number to console.
+        static void OutputIsbn(string isbnNineDigits, string checkDigit)
+        {
+            Console.WriteLine($"Calculated ISBN is {isbnNineDigits}-{checkDigit}");
+        }
+
         static void Main(string[] args)
         {
         }
