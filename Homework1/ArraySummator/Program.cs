@@ -42,7 +42,7 @@ namespace ArraySummator
         }
 
         // Finds index of smallest (leftmost if there are several) element of the array.
-        public int FindIndexOfSmallest(int[] array)
+        static int FindIndexOfSmallest(int[] array)
         {
             int indexOfSmallest = 0;
 
@@ -56,7 +56,7 @@ namespace ArraySummator
         }
 
         // Finds index of largest (rightmost if there are several) element of the array.
-        public int FindIndexOfLargest(int[] array)
+        static int FindIndexOfLargest(int[] array)
         {
             int indexOfLargest = 0;
 
@@ -72,7 +72,7 @@ namespace ArraySummator
         // Calculates the sum of the array elements located between
         // the smallest element in the array (the leftmost element if there are several)
         // and the largest element (the rightmost element if there are several)
-        public int SumBetweenSmallestAndLargest(int[] array)
+        static int SumBetweenSmallestAndLargest(int[] array)
         {
             var indexOfSmallest = FindIndexOfSmallest(array);
             var indexOfLargest = FindIndexOfLargest(array);
