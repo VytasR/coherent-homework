@@ -52,11 +52,24 @@ namespace Ternary2s
         static Dictionary<int, string> FindTwoTernary2s(int rangeStart, int rangeEnd)
         {
             var intsWithTwoTernary2s = new Dictionary<int, string>();
-
+            
             for (int i = rangeStart; i <= rangeEnd; i++)
             {
-                if (AreTwoTernary2s(i))
-                    intsWithTwoTernary2s.Add(i, ConvertDecimalToTernary(i));
+                string ternary = ConvertDecimalToTernary(i);
+                var sum2s = 0;
+
+                // Check for two ternary 2's
+                foreach (char c in ternary)
+                {
+                    if (c == '2') sum2s++;
+                    if (sum2s > 2) break;
+                }
+
+                // Add int and ternary representation to dictionary
+                if (sum2s == 2)
+                {
+                    intsWithTwoTernary2s.Add(i, ternary);
+                }                
             }
             return intsWithTwoTernary2s;
         }
