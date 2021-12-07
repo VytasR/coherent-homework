@@ -26,12 +26,16 @@ namespace ISBNCalculator
             // Calculate check sum for first 9 digits.
             int checkSumOfNineDigits = 0;
             for (int i = 0; i < isbnNineDigits.Length; i++)
+            {
                 checkSumOfNineDigits += ((int)Char.GetNumericValue(isbnNineDigits[i])) * (10 - i);
+            }                
 
             // Find next multiple of 11 (if not already a multiple).
             int nextMultipleofEleven = checkSumOfNineDigits;
             while (nextMultipleofEleven % 11 != 0)
+            {
                 nextMultipleofEleven++;
+            }                
 
             int checkDigit = nextMultipleofEleven - checkSumOfNineDigits;
 
