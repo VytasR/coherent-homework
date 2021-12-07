@@ -49,7 +49,7 @@ namespace ISBNCalculator
         {
             Console.WriteLine("-------------------------------");
             Console.Write("Press 'q' and Enter to close the app, or press any other key and Enter to continue: ");
-            return (Console.ReadLine() == "q");
+            return Console.ReadLine() == "q";
         }
 
         static void Main(string[] args)
