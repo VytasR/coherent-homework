@@ -29,9 +29,13 @@ namespace ArraySummator
                 arrayLength = Int32.Parse(Console.ReadLine());
 
                 if (arrayLength >= 2)
+                {
                     isArrayLengthAtLeastTwo = true;
+                }                    
                 else
+                {
                     Console.WriteLine("Array size error.");
+                }                    
             }
 
             int[] intArray = new int[arrayLength];
@@ -53,7 +57,9 @@ namespace ArraySummator
             for (int index = 1; index < array.Length; index++)
             {
                 if (array[index] < array[indexOfSmallest])
+                {
                     indexOfSmallest = index;
+                }                    
             }
 
             return indexOfSmallest;
@@ -67,7 +73,9 @@ namespace ArraySummator
             for (int index = 1; index < array.Length; index++)
             {
                 if (array[index] >= array[indexOfLargest])
+                {
                     indexOfLargest = index;
+                }                    
             }
 
             return indexOfLargest;
@@ -83,11 +91,19 @@ namespace ArraySummator
             var sum = 0;
 
             if (indexOfSmallest < indexOfLargest)
+            {
                 for (int index = indexOfSmallest; index <= indexOfLargest; index++)
+                {
                     sum += array[index];
+                }                    
+            }                
             else
+            {
                 for (int index = indexOfLargest; index <= indexOfSmallest; index++)
+                {
                     sum += array[index];
+                }                    
+            }                
 
             return sum;
         }
