@@ -61,8 +61,16 @@ namespace Ternary2s
                 // Check for two ternary 2's
                 foreach (char c in ternary)
                 {
-                    if (c == '2') sum2s++;
-                    if (sum2s > 2) break;
+                    if (c == '2') 
+                    {
+                        sum2s++;
+                    }
+                        
+                    if (sum2s > 2)
+                    {
+                        break;
+                    }
+                        
                 }
 
                 // Add int and ternary representation to dictionary
