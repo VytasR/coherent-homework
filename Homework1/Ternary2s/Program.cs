@@ -69,8 +69,7 @@ namespace Ternary2s
                     if (sum2s > 2)
                     {
                         break;
-                    }
-                        
+                    }                        
                 }
 
                 // Add int and ternary representation to dictionary
@@ -85,7 +84,10 @@ namespace Ternary2s
         // This method inputs integer and converts it to ternary numeral system. Returns a string.
         static string ConvertDecimalToTernary (int number)
         {
-            if (number == 0) return "0";
+            if (number == 0)
+            {
+                return "0";
+            }                
 
             var ternaryRepresentation = new StringBuilder(5);
             int quotient = Math.Abs(number);
@@ -96,7 +98,10 @@ namespace Ternary2s
                 quotient /= 3;
             }
 
-            if (number < 0) ternaryRepresentation.Insert(0, "-");
+            if (number < 0)
+            {
+                ternaryRepresentation.Insert(0, "-");
+            }                
 
             return ternaryRepresentation.ToString();
         }
