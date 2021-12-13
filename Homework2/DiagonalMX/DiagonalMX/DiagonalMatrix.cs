@@ -55,5 +55,31 @@ namespace DiagonalMX
         {
             return _diagonalElements.Sum();
         }
+
+        public override bool Equals(object obj)
+        {           
+            var otherMatrix = obj as DiagonalMatrix;
+
+            if (otherMatrix == null)
+            {
+                return false;
+            } 
+
+            if (otherMatrix.Size == this.Size)
+            {
+                bool areElementsEqual = true;
+                for (int i = 0; i < this.Size; i++)
+                {
+                    if (otherMatrix._diagonalElements[i] != this._diagonalElements[i])
+                    {
+                        areElementsEqual = false;
+                        break;
+                    }
+                }
+                return areElementsEqual;
+            }
+
+            return false;
+        }
     }
 }
