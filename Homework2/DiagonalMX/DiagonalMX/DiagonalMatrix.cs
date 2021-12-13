@@ -50,5 +50,10 @@ namespace DiagonalMX
                 }
             }
         }
+
+        public int Track()
+        {
+            return _diagonalElements.Sum();
+        }
     }
 }
