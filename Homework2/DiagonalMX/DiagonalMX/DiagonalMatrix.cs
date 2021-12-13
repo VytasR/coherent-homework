@@ -9,7 +9,7 @@ namespace DiagonalMX
     internal class DiagonalMatrix
     {
         private int[] _diagonalElements;
-        private int Size { get; }
+        public int Size { get; }
 
         public DiagonalMatrix (params int[] list)
         {            
