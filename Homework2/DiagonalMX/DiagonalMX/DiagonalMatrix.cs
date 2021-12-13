@@ -26,5 +26,29 @@ namespace DiagonalMX
                 Size = 0;
             }
         }
+
+        public int this[int i, int j]
+        {
+            get
+            {
+                if ((i == j) && (i >= 0) && (i < Size) && (j >= 0) && (j < Size))
+                {
+                    
+                    return _diagonalElements[i];
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            set
+            {
+                if ((i == j) && (i >= 0) && (i < Size) && (j >= 0) && (j < Size))
+                {
+                    _diagonalElements[i] = value;
+                }
+            }
+        }
     }
 }
