@@ -56,6 +56,7 @@ namespace DiagonalMX
             return _diagonalElements.Sum();
         }
 
+        // Returns true if sizes of matrices match and the corresponding elements on the diagonal coincide
         public override bool Equals(object obj)
         {           
             var otherMatrix = obj as DiagonalMatrix;
