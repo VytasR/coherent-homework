@@ -81,5 +81,27 @@ namespace DiagonalMX
 
             return false;
         }
+
+        // Returns a string of elements on the diagonal, separated by comma. 
+        public override string ToString()
+        {
+            if (Size == 0)
+            {
+                return String.Empty;
+            }
+            else
+            {
+                var diagonal = new StringBuilder();
+                for (int i = 0; i < Size; i++)
+                {
+                    diagonal.Append(_diagonalElements[i]);
+                    if (i < (Size - 1))
+                    {
+                        diagonal.Append(", ");
+                    }
+                }
+                return diagonal.ToString();
+            }            
+        }
     }
 }
