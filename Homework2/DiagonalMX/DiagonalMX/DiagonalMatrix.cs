@@ -83,7 +83,7 @@ namespace DiagonalMX
             return false;
         }
 
-        // Returns a string of elements on the diagonal, separated by comma. 
+        // Returns matrix elements in a multi line string, separated by comma. 
         public override string ToString()
         {
             if (Size == 0)
@@ -92,16 +92,28 @@ namespace DiagonalMX
             }
             else
             {
-                var diagonal = new StringBuilder();
+                var stringBuilder = new StringBuilder();
                 for (int i = 0; i < Size; i++)
                 {
-                    diagonal.Append(_diagonalElements[i]);
-                    if (i < (Size - 1))
+                    for (int j = 0; j < Size; j++)
                     {
-                        diagonal.Append(", ");
+                        if (i == j)
+                        {                            
+                            stringBuilder.Append(_diagonalElements[i]);
+                        }
+                        else
+                        {
+                            stringBuilder.Append("0");
+                        }
+
+                        if (j < (Size - 1))
+                        {
+                            stringBuilder.Append(",\t");
+                        }                        
                     }
+                    stringBuilder.Append("\n");
                 }
-                return diagonal.ToString();
+                return stringBuilder.ToString();
             }            
         }
     }
