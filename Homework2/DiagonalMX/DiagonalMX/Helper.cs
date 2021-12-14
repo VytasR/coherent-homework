@@ -8,6 +8,9 @@ namespace DiagonalMX
 {
     internal static class Helper
     {
+        /*
+         This class contains methods for operations with matrices
+         */
                        
         // Inputs two diagonal matrices. Adds elements of the matrices and returns a new diagonal matrix.
         // Returns null if both matrices are null. If only one is null then returns the other matrix.
