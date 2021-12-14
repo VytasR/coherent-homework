@@ -31,7 +31,7 @@ namespace DiagonalMX
         {
             get
             {
-                if ((i == j) && (i >= 0) && (i < Size) && (j >= 0) && (j < Size))
+                if (i == j && i >= 0 && i < Size && j >= 0 && j < Size)
                 {
                     
                     return _diagonalElements[i];
@@ -44,7 +44,7 @@ namespace DiagonalMX
 
             set
             {
-                if ((i == j) && (i >= 0) && (i < Size) && (j >= 0) && (j < Size))
+                if (i == j && i >= 0 && i < Size && j >= 0 && j < Size)
                 {
                     _diagonalElements[i] = value;
                 }
