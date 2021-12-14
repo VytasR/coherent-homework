@@ -108,7 +108,7 @@ namespace DiagonalMX
 
                         if (j < (Size - 1))
                         {
-                            stringBuilder.Append(",\t");
+                            stringBuilder.Append("\t");
                         }                        
                     }
                     stringBuilder.Append("\n");
