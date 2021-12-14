@@ -83,38 +83,29 @@ namespace DiagonalMX
             return false;
         }
 
-        // Returns matrix elements in a multi line string, separated by comma. 
+        // Returns matrix elements in a multi line string.
         public override string ToString()
         {
             if (Size == 0)
             {
                 return String.Empty;
             }
-            else
+            
+            var result = new StringBuilder();
+            for (int i = 0; i < Size; i++)
             {
-                var stringBuilder = new StringBuilder();
-                for (int i = 0; i < Size; i++)
+                for (int j = 0; j < Size; j++)
                 {
-                    for (int j = 0; j < Size; j++)
+                    result.Append(this[i, j]);
+                    if (j < (Size - 1))
                     {
-                        if (i == j)
-                        {                            
-                            stringBuilder.Append(_diagonalElements[i]);
-                        }
-                        else
-                        {
-                            stringBuilder.Append("0");
-                        }
-
-                        if (j < (Size - 1))
-                        {
-                            stringBuilder.Append("\t");
-                        }                        
+                        result.Append("\t\t");
                     }
-                    stringBuilder.Append("\n");
                 }
-                return stringBuilder.ToString();
-            }            
+                result.Append("\n");
+            }
+
+            return result.ToString();
         }
     }
 }
