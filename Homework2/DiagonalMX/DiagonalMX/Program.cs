@@ -8,6 +8,9 @@ namespace DiagonalMX
 {
     internal class Program
     {
+        /*
+         * This program demostrates the methods of DiagonalMatrix class.
+         */
         static void Main(string[] args)
         {
             var diagonalMatrix1 = new DiagonalMatrix(11, 123456789, 33, -123456789);
