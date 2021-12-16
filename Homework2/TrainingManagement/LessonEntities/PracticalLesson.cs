@@ -8,5 +8,13 @@ namespace TrainingManagement.LessonEntities
 {
     internal class PracticalLesson
     {
+        public string LinkToTaskCondition { get; }
+        public string LinkToSolution { get; }
+
+        public PracticalLesson(string linkToTaskCondition, string linkToSolution)
+        {
+            LinkToTaskCondition = linkToTaskCondition;
+            LinkToSolution = linkToSolution;
+        }
     }
 }
