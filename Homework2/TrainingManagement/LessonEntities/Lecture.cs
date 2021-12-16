@@ -8,5 +8,11 @@ namespace TrainingManagement
 {
     internal class Lecture
     {
+        public string Topic { get; }
+
+        public Lecture(string topic)
+        {
+            Topic = topic;
+        }
     }
 }
