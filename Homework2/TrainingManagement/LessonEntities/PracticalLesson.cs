@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrainingManagement.LessonEntities
 {
-    internal class PracticalLesson
+    internal class PracticalLesson:Lesson
     {
         public string LinkToTaskCondition { get; }
         public string LinkToSolution { get; }
