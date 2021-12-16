@@ -112,7 +112,10 @@ namespace DiagonalMX
                         }                        
                     }
                 }
-                result.Append("\n");
+                if (i < (Size - 1))
+                {
+                    result.Append("\n");
+                }
             }
 
             return result.ToString();
