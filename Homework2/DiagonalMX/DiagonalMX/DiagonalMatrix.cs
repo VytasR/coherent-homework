@@ -8,6 +8,9 @@ namespace DiagonalMX
 {
     internal class DiagonalMatrix
     {
+        /*
+         * This class models a diagonal square matrix.
+         */
         private int[] _diagonalElements;
         public int Size { get; }
 
@@ -51,12 +54,13 @@ namespace DiagonalMX
             }
         }
 
+        // Returns the sum of the elements of the matrix located on the main diagonal.
         public int Track()
         {
             return _diagonalElements.Sum();
         }
 
-        // Returns true if sizes of matrices match and the corresponding elements on the diagonal coincide
+        // Returns true if sizes of matrices match and the corresponding elements on the diagonal coincide.
         public override bool Equals(object obj)
         {           
             var otherMatrix = obj as DiagonalMatrix;
