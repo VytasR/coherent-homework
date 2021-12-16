@@ -99,7 +99,14 @@ namespace DiagonalMX
                     result.Append(this[i, j]);
                     if (j < (Size - 1))
                     {
-                        result.Append("\t\t");
+                        if (this[i, j] >= -999999 && this[i, j] <= 9999999)
+                        {
+                            result.Append("\t\t");
+                        }
+                        else
+                        {
+                            result.Append("\t");
+                        }                        
                     }
                 }
                 result.Append("\n");
