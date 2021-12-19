@@ -43,5 +43,14 @@ namespace TrainingManagement
             }
             return true;
         }
+
+        // Returns a deep copy of this Training.
+        public Training Clone()
+        {
+            Training other = (Training) this.MemberwiseClone();
+            other.Description = String.Copy(Description);
+
+            return other;
+        }
     }
 }
