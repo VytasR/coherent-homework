@@ -13,5 +13,9 @@ namespace TrainingManagement
         private const int MAX_NUMBER_OF_LESSONS = 10;
         private Lesson[] lessons;
 
+        public Training (string description)
+        {
+            Description = description;
+        }
     }
 }
