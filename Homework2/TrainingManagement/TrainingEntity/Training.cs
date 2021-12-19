@@ -28,8 +28,20 @@ namespace TrainingManagement
             else
             {
                 throw new Exception("Max number of lessons exceeded.");
+            }            
+        }
+
+        // Returns true if the training contains only practical lessons.
+        public bool IsPractical()
+        {            
+            foreach (var lesson in lessons)
+            {
+                if (lesson is Lecture)
+                {
+                    return false;
+                }
             }
-            
+            return true;
         }
     }
 }
