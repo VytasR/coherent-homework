@@ -64,7 +64,22 @@ namespace TrainingManagement
         {
             Training other = (Training) this.MemberwiseClone();
             other.Description = String.Copy(Description);
-
+            for (int index = 0; index < _lessonsIncluded; index++)
+            {
+                if (this[index] is Lecture)
+                {
+                    string description = String.Copy(this[index].Description);
+                    string topic = String.Copy(((Lecture) this[index]).Topic);
+                    other.Add(new Lecture(description, topic));
+                }
+                else if (this[index] is PracticalLesson)
+                {
+                    string description = String.Copy(this[index].Description);
+                    string linkToTaskCondition = String.Copy(((PracticalLesson)this[index]).LinkToTaskCondition);
+                    string linkToTaskSolution = String.Copy(((PracticalLesson)this[index]).LinkToTaskCondition);
+                    other.Add(new PracticalLesson(description, linkToTaskCondition, linkToTaskSolution));
+                }
+            }
             return other;
         }
     }
