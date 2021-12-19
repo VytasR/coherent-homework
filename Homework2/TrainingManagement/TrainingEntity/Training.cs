@@ -11,7 +11,7 @@ namespace TrainingManagement
     {
         public string Description { get; set; }
         private const int MAX_NUMBER_OF_LESSONS = 10;
-        private Lesson[] lessons;
+        private Lesson[] _lessons;
         private int _lessonsIncluded = 0;
 
         public Training (string description)
@@ -19,11 +19,26 @@ namespace TrainingManagement
             Description = description;
         }
 
+        public Lesson this[int index]
+        {
+            get
+            {
+                if (index < MAX_NUMBER_OF_LESSONS && index >= 0)
+                {
+                    return _lessons[index];
+                } 
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         public void Add (Lesson lesson)
         {
             if (_lessonsIncluded < MAX_NUMBER_OF_LESSONS)
             {
-                lessons[_lessonsIncluded] = lesson;
+                _lessons[_lessonsIncluded] = lesson;
             } 
             else
             {
@@ -34,7 +49,7 @@ namespace TrainingManagement
         // Returns true if the training contains only practical lessons.
         public bool IsPractical()
         {            
-            foreach (var lesson in lessons)
+            foreach (var lesson in _lessons)
             {
                 if (lesson is Lecture)
                 {
