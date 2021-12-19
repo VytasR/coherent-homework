@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace TrainingManagement.LessonEntities
 {
-    internal class Lesson
+    internal abstract class Lesson
     {
+        public string Description { get; set; }
+
+        public Lesson (string description)
+        {
+            Description = description;
+        }
     }
 }
