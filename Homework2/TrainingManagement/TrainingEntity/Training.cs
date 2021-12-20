@@ -11,13 +11,17 @@ namespace TrainingManagement
     {
         public string Description { get; set; }
         private const int MAX_NUMBER_OF_LESSONS = 10;
-        private Lesson[] _lessons;
-        private int _lessonsIncluded = 0;
+        private Lesson[] Lessons;
+        private int _numberOfLessons;
 
         public Training (string description)
         {
             Description = description;
+            Lessons = new Lesson[MAX_NUMBER_OF_LESSONS];
+            _numberOfLessons = 0;
         }
+
+        public int NumberOfLessons => _numberOfLessons;
 
         public Lesson this[int index]
         {
@@ -25,7 +29,7 @@ namespace TrainingManagement
             {
                 if (index < MAX_NUMBER_OF_LESSONS && index >= 0)
                 {
-                    return _lessons[index];
+                    return Lessons[index];
                 } 
                 else
                 {
@@ -36,9 +40,10 @@ namespace TrainingManagement
 
         public void Add (Lesson lesson)
         {
-            if (_lessonsIncluded < MAX_NUMBER_OF_LESSONS)
+            if (_numberOfLessons < MAX_NUMBER_OF_LESSONS)
             {
-                _lessons[_lessonsIncluded] = lesson;
+                Lessons[_numberOfLessons] = lesson;
+                _numberOfLessons++;
             } 
             else
             {
@@ -49,7 +54,7 @@ namespace TrainingManagement
         // Returns true if the training contains only practical lessons.
         public bool IsPractical()
         {            
-            foreach (var lesson in _lessons)
+            foreach (var lesson in Lessons)
             {
                 if (lesson is Lecture)
                 {
@@ -64,7 +69,7 @@ namespace TrainingManagement
         {
             Training other = (Training) this.MemberwiseClone();
             other.Description = String.Copy(Description);
-            for (int index = 0; index < _lessonsIncluded; index++)
+            for (int index = 0; index < _numberOfLessons; index++)
             {
                 if (this[index] is Lecture)
                 {
