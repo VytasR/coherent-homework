@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArraySummator", "ArraySummator\ArraySummator.csproj", "{E733DE38-FD59-4E83-8191-27EC3E96597D}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISBNCalculator", "ISBNCalculator\ISBNCalculator.csproj", "{0176B4F7-8EAD-4492-A8C4-17C7AF75B3A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ternary2s", "Ternary2s\Ternary2s.csproj", "{BB012A73-FF41-460B-B821-3753E9EB3CA8}"
@@ -13,6 +15,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E733DE38-FD59-4E83-8191-27EC3E96597D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E733DE38-FD59-4E83-8191-27EC3E96597D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E733DE38-FD59-4E83-8191-27EC3E96597D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E733DE38-FD59-4E83-8191-27EC3E96597D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0176B4F7-8EAD-4492-A8C4-17C7AF75B3A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0176B4F7-8EAD-4492-A8C4-17C7AF75B3A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0176B4F7-8EAD-4492-A8C4-17C7AF75B3A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
