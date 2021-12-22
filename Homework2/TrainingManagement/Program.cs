@@ -11,8 +11,8 @@ namespace TrainingManagement
     {
         static void Main(string[] args)
         {
-            var lecture1 = new Lecture("C# types and variables");
-            var lecture2 = new Lecture("C# program structure");
+            var lecture1 = new Lecture("Types and variables");
+            var lecture2 = new Lecture("Program structure");
 
             var practicalLesson1 = new PracticalLesson("Building loops");
             var practicalLesson2 = new PracticalLesson("Conditional statements");
@@ -25,8 +25,12 @@ namespace TrainingManagement
 
             var training2 = training1.Clone();
 
+            training1.Description = "Training 1";
+            lecture1.Description = "Lecture 1";
+            practicalLesson1.Description = "Practical lesson 1";
+
             Console.WriteLine(training1);
-            Console.WriteLine("\n");
+            Console.WriteLine("-------------------------------------\n");
             Console.WriteLine(training2);
 
             Console.ReadKey();
