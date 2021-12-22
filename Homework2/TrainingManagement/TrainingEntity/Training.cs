@@ -44,21 +44,21 @@ namespace TrainingManagement
         // Returns a deep copy of this Training.
         public Training Clone()
         {
-            Training other = (Training) this.MemberwiseClone();
-            other.Description = String.Copy(Description);
-            for (int index = 0; index < Lessons.Count(); index++)
+            Training other = new Training(String.Copy(Description));
+            
+            foreach (var lesson in this.Lessons)
             {
-                if (Lessons[index] is Lecture)
+                if (lesson is Lecture)
                 {
-                    string description = String.Copy(Lessons[index].Description);
-                    string topic = String.Copy(((Lecture) Lessons[index]).Topic);
+                    string description = String.Copy(lesson.Description);
+                    string topic = String.Copy((lesson as Lecture).Topic);
                     other.Add(new Lecture(description, topic));
                 }
-                else if (Lessons[index] is PracticalLesson)
+                else if (lesson is PracticalLesson)
                 {
-                    string description = String.Copy(Lessons[index].Description);
-                    string linkToTaskCondition = String.Copy(((PracticalLesson) Lessons[index]).LinkToTaskCondition);
-                    string linkToTaskSolution = String.Copy(((PracticalLesson) Lessons[index]).LinkToTaskCondition);
+                    string description = String.Copy(lesson.Description);
+                    string linkToTaskCondition = String.Copy((lesson as PracticalLesson).LinkToTaskCondition);
+                    string linkToTaskSolution = String.Copy((lesson as PracticalLesson).LinkToTaskCondition);
                     other.Add(new PracticalLesson(description, linkToTaskCondition, linkToTaskSolution));
                 }
             }
