@@ -16,5 +16,11 @@ namespace TrainingManagement.LessonEntities
             LinkToTaskCondition = linkToTaskCondition;
             LinkToSolution = linkToSolution;
         }
+
+        public PracticalLesson(string description):base(description)
+        {
+            LinkToTaskCondition = String.Empty;
+            LinkToSolution = String.Empty;
+        }
     }
 }
