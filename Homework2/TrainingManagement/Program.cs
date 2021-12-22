@@ -11,11 +11,11 @@ namespace TrainingManagement
     {
         static void Main(string[] args)
         {
-            var lecture1 = new Lecture("C# types and variables", String.Empty);
-            var lecture2 = new Lecture("C# program structure", String.Empty);
+            var lecture1 = new Lecture("C# types and variables");
+            var lecture2 = new Lecture("C# program structure");
 
-            var practicalLesson1 = new PracticalLesson("Building loops", String.Empty, String.Empty);
-            var practicalLesson2 = new PracticalLesson("Conditional statements", String.Empty, String.Empty);
+            var practicalLesson1 = new PracticalLesson("Building loops");
+            var practicalLesson2 = new PracticalLesson("Conditional statements");
 
             var training1 = new Training("Introduction to C#");
             training1.Add(lecture1);
@@ -23,7 +23,11 @@ namespace TrainingManagement
             training1.Add(practicalLesson1);
             training1.Add(practicalLesson2);
 
+            var training2 = training1.Clone();
+
             Console.WriteLine(training1);
+            Console.WriteLine("\n");
+            Console.WriteLine(training2);
 
             Console.ReadKey();
 
