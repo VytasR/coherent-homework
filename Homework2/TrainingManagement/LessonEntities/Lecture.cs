@@ -15,5 +15,10 @@ namespace TrainingManagement
         {
             Topic = topic;
         }
+
+        public Lecture(string description):base(description)
+        {
+            Topic = String.Empty;
+        }
     }
 }
