@@ -69,8 +69,8 @@ namespace TrainingManagement
         // Returns a list of lectures and practical lessons in a multi line string
         public override string ToString()
         {
-            var lectures = new StringBuilder("Lectures:\n");
-            var practicalLessons = new StringBuilder("Practical lessons:\n");
+            var lectures = new StringBuilder();
+            var practicalLessons = new StringBuilder();
 
             foreach (var lesson in Lessons)
             {
@@ -87,32 +87,34 @@ namespace TrainingManagement
                 }
                 
             }
-            lectures.Remove((lectures.Length - 2), 2);
-            practicalLessons.Remove((practicalLessons.Length - 2), 2);
-
+            
             if (!Lessons.Any())
             {
-                return $"Training {Description} contains no lessons";
+                return $"Training - {Description} - contains no lessons.";
             }
             else
             {
-                var result = new StringBuilder($"Training {Description} contains:\n");
+                var result = new StringBuilder($"Training - {Description} - contains:\n\n");
                 
                 if (lectures.Length == 0)
                 {
-                    result.Append("No lectures.");                    
+                    result.Append("No lectures.\n\n");
+                    result.Append("Practical lessons:\n");
                     result.Append(practicalLessons);
                 }
                 else if (practicalLessons.Length == 0)
                 {
-                    result.Append("No practical lessons.");                    
+                    result.Append("No practical lessons.\n\n");
+                    result.Append("Lectures:\n");
                     result.Append(lectures);
                 }
                 else
                 {
                     result.Append(lectures);
+                    result.Append("\n");
                     result.Append(practicalLessons);
                 }
+                result.Remove((result.Length - 1), 1);
 
                 return result.ToString();
             }            
