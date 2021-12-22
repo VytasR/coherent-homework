@@ -66,9 +66,14 @@ namespace TrainingManagement
             return other;
         }
 
-        // Returns a list of lectures and practical lessons in a multi line string
+        // Returns a list of lectures and practical lessons in a multi line string.
         public override string ToString()
         {
+            if (!Lessons.Any())
+            {
+                return $"Training - {Description} - contains no lessons.";
+            }
+
             var lectures = new StringBuilder();
             var practicalLessons = new StringBuilder();
 
@@ -84,40 +89,33 @@ namespace TrainingManagement
                 {
                     practicalLessons.Append((lesson as PracticalLesson).Description);
                     practicalLessons.Append("\n");
-                }
-                
+                }                
             }
-            
-            if (!Lessons.Any())
+
+            var result = new StringBuilder($"Training - {Description} - contains:\n\n");
+
+            if (lectures.Length == 0)
             {
-                return $"Training - {Description} - contains no lessons.";
+                result.Append("No lectures.\n\n");
+                result.Append("Practical lessons:\n");
+                result.Append(practicalLessons);
+            }
+            else if (practicalLessons.Length == 0)
+            {
+                result.Append("No practical lessons.\n\n");
+                result.Append("Lectures:\n");
+                result.Append(lectures);
             }
             else
             {
-                var result = new StringBuilder($"Training - {Description} - contains:\n\n");
-                
-                if (lectures.Length == 0)
-                {
-                    result.Append("No lectures.\n\n");
-                    result.Append("Practical lessons:\n");
-                    result.Append(practicalLessons);
-                }
-                else if (practicalLessons.Length == 0)
-                {
-                    result.Append("No practical lessons.\n\n");
-                    result.Append("Lectures:\n");
-                    result.Append(lectures);
-                }
-                else
-                {
-                    result.Append(lectures);
-                    result.Append("\n");
-                    result.Append(practicalLessons);
-                }
-                result.Remove((result.Length - 1), 1);
+                result.Append("Lectures:\n");
+                result.Append(lectures);
+                result.Append("\nPractical lessons:\n");
+                result.Append(practicalLessons);
+            }
+            result.Remove((result.Length - 1), 1);
 
-                return result.ToString();
-            }            
+            return result.ToString();                                
         }
     }
 }
