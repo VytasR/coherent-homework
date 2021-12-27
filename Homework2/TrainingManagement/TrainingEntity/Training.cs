@@ -85,7 +85,7 @@ namespace TrainingManagement
                 {
                     lectures.Append(lectureCount);
                     lectures.Append(". ");
-                    lectures.Append((lesson as Lecture).Description);
+                    lectures.Append(lesson.Description);
                     lectures.Append("\n");
                     lectureCount++;
                 }
@@ -94,7 +94,7 @@ namespace TrainingManagement
                 {
                     practicalLessons.Append(practicalLessonCount);
                     practicalLessons.Append(". ");
-                    practicalLessons.Append((lesson as PracticalLesson).Description);
+                    practicalLessons.Append(lesson.Description);
                     practicalLessons.Append("\n");
                     practicalLessonCount++;
                 }                
