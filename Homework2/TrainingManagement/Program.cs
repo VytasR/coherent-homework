@@ -18,10 +18,22 @@ namespace TrainingManagement
             var practicalLesson2 = new PracticalLesson("Conditional statements");
 
             var training1 = new Training("Introduction to C#");
-            training1.Add(lecture1);
-            training1.Add(lecture2);
+                        
             training1.Add(practicalLesson1);
             training1.Add(practicalLesson2);
+
+            if (training1.IsPractical())
+            {
+                Console.WriteLine($"Training - {training1.Description} - contains only practical lessons");
+            }
+
+            training1.Add(lecture1);
+            training1.Add(lecture2);
+
+            if (!training1.IsPractical())
+            {
+                Console.WriteLine($"Training - {training1.Description} - contains both lectures practical lessons");
+            }
 
             var training2 = training1.Clone();
 
@@ -29,6 +41,7 @@ namespace TrainingManagement
             lecture1.Description = "Lecture 1";
             practicalLesson1.Description = "Practical lesson 1";
 
+            Console.WriteLine("-------------------------------------\n");
             Console.WriteLine(training1);
             Console.WriteLine("-------------------------------------\n");
             Console.WriteLine(training2);
