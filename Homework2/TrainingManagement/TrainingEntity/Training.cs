@@ -76,19 +76,27 @@ namespace TrainingManagement
 
             var lectures = new StringBuilder();
             var practicalLessons = new StringBuilder();
+            int lectureCount = 1;
+            int practicalLessonCount = 1;
 
             foreach (var lesson in Lessons)
             {
                 if (lesson is Lecture)
                 {
+                    lectures.Append(lectureCount);
+                    lectures.Append(". ");
                     lectures.Append((lesson as Lecture).Description);
                     lectures.Append("\n");
+                    lectureCount++;
                 }
                 
                 if (lesson is PracticalLesson)
                 {
+                    practicalLessons.Append(practicalLessonCount);
+                    practicalLessons.Append(". ");
                     practicalLessons.Append((lesson as PracticalLesson).Description);
                     practicalLessons.Append("\n");
+                    practicalLessonCount++;
                 }                
             }
 
