@@ -18,13 +18,15 @@ namespace TrainingManagement
             var lecture1 = new Lecture("Types and variables");
             var lecture2 = new Lecture("Program structure");
 
-            var practicalLesson1 = new PracticalLesson("Building loops");
+            var practicalLesson1 = new PracticalLesson("Creating loops");
             var practicalLesson2 = new PracticalLesson("Conditional statements");
+            var practicalLesson3 = new PracticalLesson("Using Collections");
 
             var training1 = new Training("Introduction to C#");
                         
             training1.Add(practicalLesson1);
             training1.Add(practicalLesson2);
+            training1.Add(practicalLesson3);
 
             if (training1.IsPractical())
             {
