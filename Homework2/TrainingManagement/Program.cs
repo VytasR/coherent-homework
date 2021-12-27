@@ -9,6 +9,10 @@ namespace TrainingManagement
 {
     internal class Program
     {
+        /*
+         * This program demonstrates the use of classes Training, Lecture and PracticalLesson
+         */
+
         static void Main(string[] args)
         {
             var lecture1 = new Lecture("Types and variables");
