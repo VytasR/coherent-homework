@@ -44,22 +44,22 @@ namespace TrainingManagement
         // Returns a deep copy of this Training.
         public Training Clone()
         {
-            Training other = new Training(String.Copy(Description));
+            Training other = new Training(new StringBuilder(Description).ToString());
             
             foreach (var lesson in this.Lessons)
             {
+                string description = new StringBuilder(lesson.Description).ToString();
+
                 if (lesson is Lecture)
-                {
-                    string description = String.Copy(lesson.Description);
-                    string topic = String.Copy((lesson as Lecture).Topic);
+                {                    
+                    string topic = new StringBuilder((lesson as Lecture).Topic).ToString();
                     other.Add(new Lecture(description, topic));
                 }
                 else if (lesson is PracticalLesson)
-                {
-                    string description = String.Copy(lesson.Description);
-                    string linkToTaskCondition = String.Copy((lesson as PracticalLesson).LinkToTaskCondition);
-                    string linkToTaskSolution = String.Copy((lesson as PracticalLesson).LinkToTaskCondition);
-                    other.Add(new PracticalLesson(description, linkToTaskCondition, linkToTaskSolution));
+                {                    
+                    string linkToTaskCondition = new StringBuilder((lesson as PracticalLesson).LinkToTaskCondition).ToString();
+                    string linkToSolution = new StringBuilder((lesson as PracticalLesson).LinkToSolution).ToString();
+                    other.Add(new PracticalLesson(description, linkToTaskCondition, linkToSolution));
                 }
             }
 
