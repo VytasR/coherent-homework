@@ -46,7 +46,7 @@ namespace TrainingManagement
         {
             Training other = new Training(new StringBuilder(Description).ToString());
             
-            foreach (var lesson in this.Lessons)
+            foreach (var lesson in Lessons)
             {
                 string description = new StringBuilder(lesson.Description).ToString();
 
