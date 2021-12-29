@@ -50,5 +50,9 @@ namespace Piano.KeyEntity
             Accidental = accidental;
         }
 
+        public override string ToString()
+        {
+            return $"Key note: {Note}, octave: {Octave}, accidental: {Accidental}";
+        }
     }
 }
