@@ -43,5 +43,12 @@ namespace Piano.KeyEntity
         public Octave Octave;
         public Accidental Accidental;
 
+        public Key (Note note, Accidental accidental, Octave octave)
+        {
+            Note = note;
+            Octave = octave;
+            Accidental = accidental;
+        }
+
     }
 }
