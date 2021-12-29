@@ -9,7 +9,7 @@ namespace Piano.KeyEntity
 
     public enum Octave
     {
-        First,
+        First = 1,
         Second,
         Third,
         Fourth,
@@ -57,7 +57,18 @@ namespace Piano.KeyEntity
 
         public override string ToString()
         {
-            return $"Key note: {Note}, octave: {Octave}, accidental: {Accidental}";
+            string accidentalSign = String.Empty;
+
+            if (Accidental == Accidental.Sharp)
+            {
+                accidentalSign = "#";
+            }
+            else if (Accidental == Accidental.Flat)
+            {
+                accidentalSign = "b";
+            }
+
+            return $"{Note}{Accidental} ({Octave})";
         }
 
         public override bool Equals(object obj)
