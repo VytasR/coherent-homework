@@ -31,12 +31,12 @@ namespace Piano.KeyEntity
 
     public enum Accidental
     {
+        Flat,
         NoSign,
-        Sharp,
-        Flat
+        Sharp        
     }
 
-    struct Key
+    struct Key: IComparable<Key>
     {
 
         public Note Note;
@@ -48,6 +48,11 @@ namespace Piano.KeyEntity
             Note = note;
             Octave = octave;
             Accidental = accidental;
+        }
+
+        public int CompareTo(Key other)
+        {
+            return 14 * (Octave - other.Octave) + 2 * (Note - other.Note) + Accidental - other.Accidental;
         }
 
         public override string ToString()
