@@ -59,5 +59,17 @@ namespace Piano.KeyEntity
         {
             return $"Key note: {Note}, octave: {Octave}, accidental: {Accidental}";
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Key))
+            {
+                return false;
+            }
+            else
+            {
+                return this.CompareTo((Key)obj) == 0 ? true : false;
+            }            
+        }
     }
 }
