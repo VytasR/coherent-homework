@@ -68,7 +68,7 @@ namespace Piano.KeyEntity
                 accidentalSign = "b";
             }
 
-            return $"{Note}{Accidental} ({Octave})";
+            return $"{Note}{accidentalSign} ({(int)Octave})";
         }
 
         public override bool Equals(object obj)
