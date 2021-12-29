@@ -68,7 +68,7 @@ namespace Piano.KeyEntity
             }
             else
             {
-                return this.CompareTo((Key)obj) == 0 ? true : false;
+                return this.CompareTo((Key)obj) == 0;
             }            
         }
     }
