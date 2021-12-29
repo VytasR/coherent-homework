@@ -38,5 +38,10 @@ namespace Piano.KeyEntity
 
     struct Key
     {
+
+        public Note Note;
+        public Octave Octave;
+        public Accidental Accidental;
+
     }
 }
