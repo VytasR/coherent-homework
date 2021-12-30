@@ -11,13 +11,19 @@ namespace Piano
     {
         static void Main(string[] args)
         {
-            var c = new Key(Note.C, Accidental.Sharp, Octave.First);
-            var d = new Key(Note.D, Accidental.Flat, Octave.First);
+            var c1 = new Key(Note.C, Accidental.Sharp, Octave.First);
+            var d1 = new Key(Note.D, Accidental.Flat, Octave.First);
+            var b4 = new Key(Note.B, Accidental.NoSign, Octave.Fourth);
 
-            Console.WriteLine(c);
-            Console.WriteLine(d);
-            Console.WriteLine(c.Equals(d));
-            Console.WriteLine(c.CompareTo(d));
+            Console.WriteLine(c1);
+            Console.WriteLine(d1);
+            Console.WriteLine(b4);
+            Console.WriteLine($"Key {c1} equals key {d1} : {c1.Equals(d1)}");
+            Console.WriteLine($"Key {d1} equals key {b4} : {d1.Equals(b4)}");
+            Console.WriteLine(c1.CompareTo(d1));
+            Console.WriteLine(d1.CompareTo(b4));
+
+            Console.ReadKey();
         }
     }
 }
