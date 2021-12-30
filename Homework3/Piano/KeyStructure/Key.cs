@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Piano.KeyEntity
 {
     /*
-     * This class represents a piano key on a piano keyboard.
+     * This structure represents a piano key on a piano keyboard.
      */
-    public enum Octave
+    enum Octave
     {
         First = 1,
         Second,
@@ -20,7 +20,7 @@ namespace Piano.KeyEntity
         Seventh
     }
 
-    public enum Note
+    enum Note
     {
         A,
         B,
@@ -31,7 +31,7 @@ namespace Piano.KeyEntity
         G
     }
 
-    public enum Accidental
+    enum Accidental
     {
         Flat,
         NoSign,
