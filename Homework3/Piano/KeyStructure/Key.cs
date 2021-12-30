@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Piano.KeyEntity
 {
-
+    /*
+     * This class represents a piano key on a piano keyboard.
+     */
     public enum Octave
     {
         First = 1,
@@ -38,7 +40,6 @@ namespace Piano.KeyEntity
 
     struct Key: IComparable<Key>
     {
-
         public Note Note;
         public Octave Octave;
         public Accidental Accidental;
