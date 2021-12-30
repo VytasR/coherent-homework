@@ -14,17 +14,20 @@ namespace Piano
          */
         static void Main(string[] args)
         {
-            var c1 = new Key(Note.C, Accidental.Sharp, Octave.First);
-            var d1 = new Key(Note.D, Accidental.Flat, Octave.First);
-            var b4 = new Key(Note.B, Accidental.NoSign, Octave.Fourth);
+            var c1Sharp = new Key(Note.C, Accidental.Sharp, Octave.First);
+            var d1Flat = new Key(Note.D, Accidental.Flat, Octave.First);
+            var Sharp = new Key(Note.B, Accidental.Sharp, Octave.Fourth);
+            var c5Natural = new Key(Note.C, Accidental.NoSign, Octave.Fifth);
 
-            Console.WriteLine(c1);
-            Console.WriteLine(d1);
-            Console.WriteLine(b4);
-            Console.WriteLine($"Key {c1} equals key {d1} : {c1.Equals(d1)}");
-            Console.WriteLine($"Key {d1} equals key {b4} : {d1.Equals(b4)}");
-            Console.WriteLine(c1.CompareTo(d1));
-            Console.WriteLine(d1.CompareTo(b4));
+            Console.WriteLine(c1Sharp);
+            Console.WriteLine(d1Flat);
+            Console.WriteLine(Sharp);
+            Console.WriteLine(c5Natural);
+            Console.WriteLine($"Key {c1Sharp} equals key {d1Flat} : {c1Sharp.Equals(d1Flat)}");
+            Console.WriteLine($"Key {d1Flat} equals key {Sharp} : {d1Flat.Equals(Sharp)}");
+            Console.WriteLine($"Key {Sharp} equals key {c5Natural} : {Sharp.Equals(c5Natural)}");
+            Console.WriteLine(c1Sharp.CompareTo(d1Flat));
+            Console.WriteLine(d1Flat.CompareTo(Sharp));
 
             Console.ReadKey();
         }
