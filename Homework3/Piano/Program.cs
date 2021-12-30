@@ -9,6 +9,9 @@ namespace Piano
 {
     internal class Program
     {
+        /*
+         * This program demonstrates the use of structure Key.
+         */
         static void Main(string[] args)
         {
             var c1 = new Key(Note.C, Accidental.Sharp, Octave.First);
