@@ -24,20 +24,21 @@ namespace Piano.KeyEntity
 
     enum Note
     {
-        C,
-        D,
-        E,
-        F,
-        G,
-        A,
-        B
+        // Associated integers represent difference between notes in semitones.
+        C = 1,
+        D = 3,
+        E = 5,
+        F = 6,
+        G = 8,
+        A = 10,
+        B = 12
     }
 
     enum Accidental
     {
-        Flat,
-        NoSign,
-        Sharp        
+        Flat = -1,
+        NoSign = 0,
+        Sharp = 1       
     }
 
     struct Key: IComparable<Key>
@@ -55,7 +56,7 @@ namespace Piano.KeyEntity
 
         public int CompareTo(Key other)
         {
-            return 14 * (Octave - other.Octave) + 2 * (Note - other.Note) + Accidental - other.Accidental;
+            return 12 * (Octave - other.Octave) + Note - other.Note + Accidental - other.Accidental;
         }
 
         public override string ToString()
