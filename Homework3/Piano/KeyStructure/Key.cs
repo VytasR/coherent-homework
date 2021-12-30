@@ -11,13 +11,15 @@ namespace Piano.KeyEntity
      */
     enum Octave
     {
-        First = 1,
+        Zeroth,
+        First,
         Second,
         Third,
         Fourth,
         Fifth,
         Sixth,
-        Seventh
+        Seventh,
+        Eigth
     }
 
     enum Note
