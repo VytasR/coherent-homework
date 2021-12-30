@@ -22,13 +22,13 @@ namespace Piano.KeyEntity
 
     enum Note
     {
-        A,
-        B,
         C,
         D,
         E,
         F,
-        G
+        G,
+        A,
+        B
     }
 
     enum Accidental
