@@ -58,7 +58,7 @@ namespace Piano.KeyEntity
 
         public override string ToString()
         {
-            string accidentalSign = String.Empty;
+            var accidentalSign = String.Empty;
 
             if (Accidental == Accidental.Sharp)
             {
