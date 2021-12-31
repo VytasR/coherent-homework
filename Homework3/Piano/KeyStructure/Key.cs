@@ -56,6 +56,7 @@ namespace Piano.KeyEntity
 
         public int CompareTo(Key other)
         {
+            // Int 12 here represents the difference between octaves in semitones
             return 12 * (Octave - other.Octave) + Note - other.Note + Accidental - other.Accidental;
         }
 
