@@ -8,5 +8,8 @@ namespace StackApp.StackItems
 {
     internal interface IStack<T> where T : struct
     {
+        void Push(T data);
+        T Pop();
+        bool IsEmpty();
     }
 }
