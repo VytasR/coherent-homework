@@ -48,7 +48,11 @@ namespace StackApp.StackItems
 
         public void Push(T data)
         {
-            throw new NotImplementedException();
+            if (_pointer < _array.Length)
+            {
+                _array[_pointer] = data;
+                _pointer++;
+            }
         }
     }
 }
