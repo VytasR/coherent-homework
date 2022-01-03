@@ -11,17 +11,17 @@ namespace StackApp
     {
         static void Main(string[] args)
         {
-            IStack<int> intStack1 = new Stack<int>();
-            Console.WriteLine($"The stack is empty: {intStack1.IsEmpty()}");
+            IStack<int> intStack1 = new Stack<int>(10);
+            Console.WriteLine($"Integer stack is empty: {intStack1.IsEmpty()}");
             intStack1.Push(1);
             intStack1.Push(2);
             intStack1.Push(3);
             intStack1.Push(4);
             intStack1.Push(5);
             intStack1.Push(6);
-            Console.WriteLine($"The stack is empty: {intStack1.IsEmpty()}");
+            Console.WriteLine($"Integer stack is empty: {intStack1.IsEmpty()}");
             Console.WriteLine();
-            Console.WriteLine("Integer stack items:");
+            Console.WriteLine("Integer stack items:");            
             while (!intStack1.IsEmpty())
             {
                 Console.WriteLine(intStack1.Pop());
@@ -31,13 +31,14 @@ namespace StackApp
             floatStack1.Push(25.6f);
             floatStack1.Push(11.58f);
             floatStack1.Push(0.689f);
-            floatStack1.Push(-48.654f);
+            floatStack1.Push(-48.654f);            
+            var reverseFloatStack1 = Helper.Reverse<float>(floatStack1);
             Console.WriteLine();
-            Console.WriteLine("Float stack items:");
-            while (!floatStack1.IsEmpty())
+            Console.WriteLine("Reverse float stack items:");
+            while (!reverseFloatStack1.IsEmpty())
             {
-                Console.WriteLine(floatStack1.Pop());
-            }
+                Console.WriteLine(reverseFloatStack1.Pop());
+            }            
         }
     }
 }
