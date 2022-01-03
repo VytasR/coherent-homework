@@ -33,7 +33,7 @@ namespace StackApp.StackItems
 
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+            return _pointer == 0;
         }
 
         public T Pop()
