@@ -9,7 +9,6 @@ namespace StackApp.StackItems
     internal class Stack<T> : IStack<T> where T : struct
     {
         private const int DEFAULT_CAPACITY = 16;
-        public int CAPACITY { get; }
         private T[] _array;
         private int _pointer;
 
@@ -18,12 +17,10 @@ namespace StackApp.StackItems
             if (capacity > 0)
             {
                 _array = new T[capacity];
-                CAPACITY = capacity;
             }
             else
             {
                 _array = new T[DEFAULT_CAPACITY];
-                CAPACITY = DEFAULT_CAPACITY;
             }
             _pointer = 0;
         }
@@ -31,7 +28,6 @@ namespace StackApp.StackItems
         public Stack()
         {
             _array = new T[DEFAULT_CAPACITY];
-            CAPACITY = DEFAULT_CAPACITY;
             _pointer = 0;
         }
 
@@ -52,7 +48,7 @@ namespace StackApp.StackItems
 
         public void Push(T data)
         {
-            if (_pointer < CAPACITY)
+            if (_pointer < _array.Length)
             {
                 _array[_pointer] = data;
                 _pointer++;
