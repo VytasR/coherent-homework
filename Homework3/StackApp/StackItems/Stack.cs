@@ -38,7 +38,12 @@ namespace StackApp.StackItems
 
         public T Pop()
         {
-            throw new NotImplementedException();
+            if (_pointer > 0)
+            {
+                _pointer--;
+                return _array[_pointer];
+            }
+            return default(T);
         }
 
         public void Push(T data)
