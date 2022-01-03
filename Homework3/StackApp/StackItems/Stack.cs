@@ -8,9 +8,28 @@ namespace StackApp.StackItems
 {
     internal class Stack<T> : IStack<T> where T : struct
     {
-        private const int DEFAULT_CAPACITY = 64;
+        private const int DEFAULT_CAPACITY = 16;
         private T[] _array;
         private int _pointer;
+
+        public Stack(int capacity)
+        {
+            if (capacity > 0)
+            {
+                _array = new T[capacity];
+            }
+            else
+            {
+                _array = new T[DEFAULT_CAPACITY];
+            }
+            _pointer = 0;
+        }
+
+        public Stack()
+        {
+            _array = new T[DEFAULT_CAPACITY];
+            _pointer = 0;
+        }
 
         public bool IsEmpty()
         {
