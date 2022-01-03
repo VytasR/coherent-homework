@@ -8,6 +8,10 @@ namespace StackApp.StackItems
 {
     internal class Stack<T> : IStack<T> where T : struct
     {
+        private const int DEFAULT_CAPACITY = 64;
+        private T[] _array;
+        private int _pointer;
+
         public bool IsEmpty()
         {
             throw new NotImplementedException();
