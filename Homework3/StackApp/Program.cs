@@ -9,6 +9,9 @@ namespace StackApp
 {
     internal class Program
     {
+        /*
+         * This program demonstrates the use of interface IStack<> and class Stack<>.
+         */
         static void Main(string[] args)
         {
             IStack<int> intStack1 = new Stack<int>(10);
