@@ -9,6 +9,7 @@ namespace StackApp.StackItems
     internal static class Helper
     {
         // Returns a new stack in which the elements of the original parameter stack are in reverse order.
+        // Empties the original stack.
         public static IStack<T> Reverse<T>(IStack<T> stack) where T : struct
         {
             IStack<T> reverseStack = new Stack<T>();
