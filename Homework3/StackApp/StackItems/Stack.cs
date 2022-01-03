@@ -31,11 +31,13 @@ namespace StackApp.StackItems
             _pointer = 0;
         }
 
+        // Checks for the emptiness of the stack.
         public bool IsEmpty()
         {
             return _pointer == 0;
         }
 
+        // Removes and returns the last inserted element.
         public T Pop()
         {
             if (_pointer > 0)
@@ -46,6 +48,7 @@ namespace StackApp.StackItems
             return default(T);
         }
 
+        // Pushes an item onto the stack.
         public void Push(T data)
         {
             if (_pointer < _array.Length)
