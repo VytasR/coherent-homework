@@ -71,6 +71,7 @@ namespace TrainingManagement
             {
                 if (lesson is Lecture)
                 {
+                    lectures.Append(" ");
                     lectures.Append(lectureCount);
                     lectures.Append(". ");
                     lectures.Append(lesson.Description);
@@ -80,6 +81,7 @@ namespace TrainingManagement
                 
                 if (lesson is PracticalLesson)
                 {
+                    practicalLessons.Append(" ");
                     practicalLessons.Append(practicalLessonCount);
                     practicalLessons.Append(". ");
                     practicalLessons.Append(lesson.Description);
