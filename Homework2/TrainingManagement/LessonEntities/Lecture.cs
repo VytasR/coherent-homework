@@ -20,5 +20,10 @@ namespace TrainingManagement
         {
             Topic = String.Empty;
         }
+
+        public override Lesson Clone()
+        {
+            return new Lecture(Description, Topic);
+        }
     }
 }
