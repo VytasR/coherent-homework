@@ -14,5 +14,7 @@ namespace TrainingManagement.LessonEntities
         {
             Description = description;
         }
+
+        public abstract Lesson Clone();
     }
 }
