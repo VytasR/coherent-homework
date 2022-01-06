@@ -22,5 +22,10 @@ namespace TrainingManagement.LessonEntities
             LinkToTaskCondition = String.Empty;
             LinkToSolution = String.Empty;
         }
+
+        public override Lesson Clone()
+        {
+            return new PracticalLesson(Description, LinkToTaskCondition, LinkToSolution);
+        }
     }
 }
