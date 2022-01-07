@@ -45,7 +45,10 @@ namespace StackApp.StackItems
                 _pointer--;
                 return _array[_pointer];
             }
-            return default(T);
+            else
+            {
+                throw new InvalidOperationException("Attempt to remove an item from an empty stack.");
+            }                        
         }
 
         // Pushes an item onto the stack.
@@ -56,6 +59,10 @@ namespace StackApp.StackItems
                 _array[_pointer] = data;
                 _pointer++;
             }
+            else
+            {
+                throw new InvalidOperationException("Attempt to push an item to a full stack.");
+            }            
         }
     }
 }
