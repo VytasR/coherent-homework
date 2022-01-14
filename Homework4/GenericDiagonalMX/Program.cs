@@ -12,12 +12,12 @@ namespace GenericDiagonalMX
         static void Main(string[] args)
         {
             var diagonalFloatMatrix1 = new DiagonalMatrix<double>(4);
+            var matrixTracker1 = new MatrixTracker<double>(diagonalFloatMatrix1);
             diagonalFloatMatrix1.ElementChanged += PrintUpdate;
             diagonalFloatMatrix1[0, 0] = 15.8;
-            diagonalFloatMatrix1[0, 0] = 15.8;
-            diagonalFloatMatrix1[0, 0] = 16.78;
+            matrixTracker1.Undo();           
             diagonalFloatMatrix1[1, 1] = 0.56;
-            Console.WriteLine($"Value at index 0, 2 = {diagonalFloatMatrix1[0, 2]}");            
+            Console.WriteLine($"Value at index 0, 0 = {diagonalFloatMatrix1[0, 0]}");            
 
         }
 
