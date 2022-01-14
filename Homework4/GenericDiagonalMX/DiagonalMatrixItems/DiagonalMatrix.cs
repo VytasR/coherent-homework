@@ -10,5 +10,18 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
     {
         private T[] _diagonalElements;
         public int Size { get; }
+
+        public DiagonalMatrix(int size)
+        {
+            if (size < 0)
+            {
+                throw new ArgumentException("Invalid diagonal matrix size.");
+            }
+            else
+            {
+                Size = size;
+                _diagonalElements = new T[Size];
+            }
+        }
     }
 }
