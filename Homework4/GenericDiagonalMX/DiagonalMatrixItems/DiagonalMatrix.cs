@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace GenericDiagonalMX.DiagonalMatrixItems
 {
-    internal class DiagonalMatrix
+    internal class DiagonalMatrix<T>
     {
+        private T[] _diagonalElements;
+        public int Size { get; }
     }
 }
