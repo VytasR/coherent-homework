@@ -8,27 +8,31 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
 {
     internal class MatrixTracker<T>
     {
+        // This class records last change in diagonal matrix and can roll it back.
+
         private DiagonalMatrix<T> _diagonalMatrix;
         private int _rowIndexOfLastChange;
         private int _columnIndexOfLastChange;
-        private T _elementValueBeforeLastChange;
+        private T _oldValue;
 
         public MatrixTracker(DiagonalMatrix<T> diagonalMatrix)
         {
             _diagonalMatrix = diagonalMatrix;
-            _diagonalMatrix.ElementChanged += Update;
+            _diagonalMatrix.ElementChanged += StoreOldValue;
         }
 
-        private void Update(int rowIndex, int columnIndex, T oldValue, T newValue)
+        // Stores index and old element value for last change in diagonal matrix.
+        private void StoreOldValue(int rowIndex, int columnIndex, T oldValue, T newValue)
         {
             _rowIndexOfLastChange = rowIndex;
             _columnIndexOfLastChange = columnIndex;
-            _elementValueBeforeLastChange = oldValue;
+            _oldValue = oldValue;
         }
 
+        // Rolls back last change in diagonal matrix.
         public void Undo()
         {
-            _diagonalMatrix[_rowIndexOfLastChange, _columnIndexOfLastChange] = _elementValueBeforeLastChange;
+            _diagonalMatrix[_rowIndexOfLastChange, _columnIndexOfLastChange] = _oldValue;
         }
     }
 }
