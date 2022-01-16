@@ -19,7 +19,7 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
         {
             if (size < 0)
             {
-                throw new ArgumentException("Invalid diagonal matrix size.");
+                throw new ArgumentException("Invalid diagonal matrix size. Must be a non negative integer.");
             }
             else
             {
@@ -61,6 +61,18 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
                    _diagonalElements[i] = value;
                 }
             }
+        }
+
+        // Returns a copy of this matrix.
+        public DiagonalMatrix<T> Copy()
+        {
+            var result = new DiagonalMatrix<T>(Size);
+            for (int i = 0; i < Size; i++)
+            {
+                result[i, i] = this[i, i];
+            }
+
+            return result;
         }
     }
 }
