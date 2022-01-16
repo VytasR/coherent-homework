@@ -9,7 +9,9 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
     public delegate void ElementChangedEventHandler<T>(int i, int j, T oldValue, T newValue);
 
     internal class DiagonalMatrix<T>
-    {        
+    {   
+        // This class models a diagonal square matrix.
+
         public event ElementChangedEventHandler<T> ElementChanged;
 
         private T[] _diagonalElements;
