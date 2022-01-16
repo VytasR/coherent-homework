@@ -17,16 +17,16 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
 
         public MatrixTracker(DiagonalMatrix<T> diagonalMatrix)
         {
-            _diagonalMatrix = diagonalMatrix;
+            _diagonalMatrix = diagonalMatrix;            
             _diagonalMatrix.ElementChanged += StoreOldValue;
         }
-
+                
         // Stores index and old element value for last change in diagonal matrix.
-        private void StoreOldValue(int rowIndex, int columnIndex, T oldValue, T newValue)
+        private void StoreOldValue(object sender, MatrixElementChangedArgs<T> eventArgs)
         {
-            _rowIndexOfLastChange = rowIndex;
-            _columnIndexOfLastChange = columnIndex;
-            _oldValue = oldValue;
+            _rowIndexOfLastChange = eventArgs.Row;
+            _columnIndexOfLastChange = eventArgs.Column;
+            _oldValue = eventArgs.OldValue;
         }
 
         // Rolls back last change in diagonal matrix.

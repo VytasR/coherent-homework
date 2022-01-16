@@ -5,14 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GenericDiagonalMX.DiagonalMatrixItems
-{
-    public delegate void ElementChangedEventHandler<T>(int i, int j, T oldValue, T newValue);
-
+{    
     internal class DiagonalMatrix<T>
     {   
         // This class models a diagonal square matrix.
-
-        public event ElementChangedEventHandler<T> ElementChanged;
+                
+        public event EventHandler<MatrixElementChangedArgs<T>> ElementChanged;
 
         private T[] _diagonalElements;
         public int Size { get; }
@@ -57,11 +55,12 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
                 else if (i == j)
                 {
                     if (!_diagonalElements[i].Equals(value))
-                    {
-                        ElementChanged?.Invoke(i, j, _diagonalElements[i], value);
+                    {                        
+                        ElementChanged?.Invoke(this, new MatrixElementChangedArgs<T>(i, j, _diagonalElements[i], value));
                     }                    
                    _diagonalElements[i] = value;
                 }
+                
             }
         }
 
