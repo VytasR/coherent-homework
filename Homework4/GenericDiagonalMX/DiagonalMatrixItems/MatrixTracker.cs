@@ -11,8 +11,8 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
         // This class records last change in diagonal matrix and can roll it back.
 
         private DiagonalMatrix<T> _diagonalMatrix;
-        private int _rowIndexOfLastChange;
-        private int _columnIndexOfLastChange;
+        private int _rowOfLastElementChange;
+        private int _columnOfLastElementChange;
         private T _oldValue;
 
         public MatrixTracker(DiagonalMatrix<T> diagonalMatrix)
@@ -24,15 +24,15 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
         // Stores index and old element value for last change in diagonal matrix.
         private void StoreOldValue(object sender, MatrixElementChangedArgs<T> eventArgs)
         {
-            _rowIndexOfLastChange = eventArgs.Row;
-            _columnIndexOfLastChange = eventArgs.Column;
+            _rowOfLastElementChange = eventArgs.Row;
+            _columnOfLastElementChange = eventArgs.Column;
             _oldValue = eventArgs.OldValue;
         }
 
         // Rolls back last change in diagonal matrix.
         public void Undo()
         {
-            _diagonalMatrix[_rowIndexOfLastChange, _columnIndexOfLastChange] = _oldValue;
+            _diagonalMatrix[_rowOfLastElementChange, _columnOfLastElementChange] = _oldValue;
         }
     }
 }
