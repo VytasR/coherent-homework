@@ -8,7 +8,7 @@ namespace GenericDiagonalMX.MatrixEntities
 {
     internal class MatrixElementChangedArgs<T> : EventArgs
     {
-        // Instances of this class contain diagonal matrix ElementChanged event data.
+        // Instances of this class contain event data for matrix ElementChanged events.
 
         public int Row { get; }
         public int Column { get; }
