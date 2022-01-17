@@ -9,7 +9,7 @@ namespace GenericDiagonalMX
 {
     internal class Program
     {
-        // This program demonstrates methods of DiagonalMatrix class.
+        // This program demonstrates methods of generic DiagonalMatrix class.
 
         static void Main(string[] args)
         {
@@ -39,8 +39,6 @@ namespace GenericDiagonalMX
 
             Console.WriteLine("\nElements of matrix1 + matrix2:");
             PrintDiagonalMatrixElements<double>(diagonalMatrix3);
-
-
         }
 
         // Prints elements from the main diagonal of the matrix.
@@ -50,7 +48,6 @@ namespace GenericDiagonalMX
             {                
                 Console.Write($"{diagonalMatrix[i, i]}\t");
             }
-
             Console.WriteLine();
         }
     }
