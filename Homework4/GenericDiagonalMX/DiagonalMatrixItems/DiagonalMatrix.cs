@@ -28,17 +28,17 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
             }
         }
 
-        public T this[int i, int j]
+        public T this[int row, int column]
         {
             get
             {
-                if (i < 0 || i >= Size || j < 0 || j >= Size)                
+                if (row < 0 || row >= Size || column < 0 || column >= Size)                
                 {                    
                     throw new IndexOutOfRangeException("Index out of bounds of the diagonal matrix.");
                 }
-                else if (i == j)
+                else if (row == column)
                 {
-                    return _diagonalElements[i];
+                    return _diagonalElements[row];
                 }
                 else
                 {
@@ -48,19 +48,18 @@ namespace GenericDiagonalMX.DiagonalMatrixItems
 
             set
             {
-                if (i < 0 || i >= Size || j < 0 || j >= Size)
+                if (row < 0 || row >= Size || column < 0 || column >= Size)
                 {
                     throw new IndexOutOfRangeException("Index out of bounds of the diagonal matrix.");
                 }
-                else if (i == j)
+                else if (row == column)
                 {
-                    if (!_diagonalElements[i].Equals(value))
+                    if (!_diagonalElements[row].Equals(value))
                     {                        
-                        ElementChanged?.Invoke(this, new MatrixElementChangedArgs<T>(i, j, _diagonalElements[i], value));
+                        ElementChanged?.Invoke(this, new MatrixElementChangedArgs<T>(row, column, _diagonalElements[row], value));
                     }                    
-                   _diagonalElements[i] = value;
-                }
-                
+                   _diagonalElements[row] = value;
+                }                
             }
         }
 
