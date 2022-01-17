@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiagonalMatrixItems\DiagonalMatrix.cs" />
-    <Compile Include="DiagonalMatrixItems\Helper.cs" />
-    <Compile Include="DiagonalMatrixItems\MatrixElementChangedArgs.cs" />
-    <Compile Include="DiagonalMatrixItems\MatrixTracker.cs" />
+    <Compile Include="MatrixEntities\DiagonalMatrix.cs" />
+    <Compile Include="MatrixHelper\Helper.cs" />
+    <Compile Include="MatrixEntities\MatrixElementChangedArgs.cs" />
+    <Compile Include="MatrixEntities\MatrixTracker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

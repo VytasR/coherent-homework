@@ -1,4 +1,4 @@
-﻿using GenericDiagonalMX.DiagonalMatrixItems;
+﻿using GenericDiagonalMX.MatrixEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
