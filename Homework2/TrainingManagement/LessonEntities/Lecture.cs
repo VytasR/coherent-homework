@@ -7,16 +7,16 @@ using TrainingManagement.LessonEntities;
 
 namespace TrainingManagement
 {
-    internal class Lecture:Lesson
+    internal class Lecture : Lesson
     {
         public string Topic { get; set; }
 
-        public Lecture(string description, string topic):base(description)
+        public Lecture(string description, string topic) : base(description)
         {
             Topic = topic;
         }
 
-        public Lecture(string description):base(description)
+        public Lecture(string description) : base(description)
         {
             Topic = String.Empty;
         }

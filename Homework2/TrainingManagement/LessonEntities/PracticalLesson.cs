@@ -11,7 +11,7 @@ namespace TrainingManagement.LessonEntities
         public string LinkToTaskCondition { get; set; }
         public string LinkToSolution { get; set; }
 
-        public PracticalLesson(string description, string linkToTaskCondition, string linkToSolution):base(description)
+        public PracticalLesson(string description, string linkToTaskCondition, string linkToSolution) : base(description)
         {
             LinkToTaskCondition = linkToTaskCondition;
             LinkToSolution = linkToSolution;
