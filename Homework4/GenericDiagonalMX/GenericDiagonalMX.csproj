@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MatrixEntities\DiagonalMatrix.cs" />
-    <Compile Include="MatrixHelper\Helper.cs" />
+    <Compile Include="MatrixExtensions\Helper.cs" />
     <Compile Include="MatrixEntities\MatrixElementChangedArgs.cs" />
     <Compile Include="MatrixEntities\MatrixTracker.cs" />
     <Compile Include="Program.cs" />
