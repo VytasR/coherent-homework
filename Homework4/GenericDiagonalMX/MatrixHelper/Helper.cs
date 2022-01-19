@@ -5,9 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GenericDiagonalMX.MatrixEntities
-{
-    public delegate T AdditionMethod<T>(T elementOne, T elementTwo);
-
+{    
     internal static class Helper<T>
     {
         // This class contains methods for operation with diagonal matrices.
@@ -16,7 +14,7 @@ namespace GenericDiagonalMX.MatrixEntities
         // Adds elements of the matrices and returns a new matrix. Returns null if both matrices are null.
         // If only one matrix is null then returns the other matrix. If dimensions of input matrices do not match,
         // the new matrix is filled with elements of the bigger matrix where elements of from the smaller matrix are absent.  
-        public static DiagonalMatrix<T> Add(DiagonalMatrix<T> thisMatrix, DiagonalMatrix<T> anotherMatrix, AdditionMethod<T> additionMethod)
+        public static DiagonalMatrix<T> Add(DiagonalMatrix<T> thisMatrix, DiagonalMatrix<T> anotherMatrix, Func<T, T, T> additionMethod)
         {
             if (thisMatrix is null && anotherMatrix is null)
             {
