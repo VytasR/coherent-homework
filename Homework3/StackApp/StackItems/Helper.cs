@@ -1,10 +1,11 @@
-﻿using System;
+﻿using StackApp.StackItems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StackApp.StackItems
+namespace StackApp.StackExtensions
 {
     internal static class Helper
     {
@@ -12,7 +13,7 @@ namespace StackApp.StackItems
         // Empties the original stack.
         public static IStack<T> Reverse<T>(IStack<T> stack) where T : struct
         {
-            IStack<T> reverseStack = new Stack<T>();
+            IStack<T> reverseStack = new StackItems.Stack<T>();
 
             while (!stack.IsEmpty())
             {
