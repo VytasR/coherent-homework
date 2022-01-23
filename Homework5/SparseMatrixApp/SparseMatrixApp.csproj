@@ -48,7 +48,6 @@
     <Compile Include="SparseMatrixEntities\ByCoordinates.cs" />
     <Compile Include="SparseMatrixEntities\Coordinates.cs" />
     <Compile Include="SparseMatrixEntities\SparseMatrix.cs" />
-    <Compile Include="SparseMatrixEntities\MatrixItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
