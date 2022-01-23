@@ -25,5 +25,53 @@ namespace SparseMatrixApp.SparseMatrixEntities
                 _items = new SortedList<Coordinates, int>(new ByCoordinates());
             }
         }
+
+        public int this[int row, int column]
+        {
+            get
+            {
+                if (row < 0 || row >= NumberOfRows || column < 0 || column >= NumberOfColumns)
+                {
+                    throw new IndexOutOfRangeException("Index out of bounds of the matrix.");
+                }
+
+                var coordinates = new Coordinates(row, column);
+                if (_items.ContainsKey(coordinates))
+                {
+                    return _items[coordinates];
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            set
+            {
+                if (row < 0 || row >= NumberOfRows || column < 0 || column >= NumberOfColumns)
+                {
+                    throw new IndexOutOfRangeException("Index out of bounds of the matrix.");
+                }
+
+                var coordinates = new Coordinates(row, column);
+                if (_items.ContainsKey(coordinates))
+                {
+                    if (value == 0)
+                    {
+                        _items.Remove(coordinates);
+                    }
+                    else
+                    {
+                        _items[coordinates] = value;
+                    }
+                }
+                else
+                {
+                    if (value != 0)
+                    {
+                        _items.Add(coordinates, value);
+                    }
+                }
+            }
+        }
     }
 }
