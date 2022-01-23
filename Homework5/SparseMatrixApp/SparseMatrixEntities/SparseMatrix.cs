@@ -112,5 +112,14 @@ namespace SparseMatrixApp.SparseMatrixEntities
         {
             return this.GetEnumerator();
         }
+
+        // Returns a set of touples (row, column, element value) ordered by columns then by rows.
+        public IEnumerable<(int, int, int)> GetNonZeroElements()
+        {
+            foreach (var item in _items)
+            {
+                yield return (item.Key.Row, item.Key.Column, item.Value);
+            }
+        }
     }
 }
