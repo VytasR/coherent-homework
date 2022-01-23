@@ -73,5 +73,27 @@ namespace SparseMatrixApp.SparseMatrixEntities
                 }
             }
         }
+
+        // Returns matrix elements in a multi line string.
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+            for (int row = 0; row < NumberOfRows; row++)
+            {
+                for (int column = 0; column < NumberOfColumns; column++)
+                {
+                    result.Append(this[row, column]);
+                    if (column < NumberOfColumns - 1)
+                    {
+                        result.Append("\t");
+                    }
+                }
+                if (row < NumberOfRows - 1)
+                {
+                    result.Append("\n");
+                }
+            }
+            return result.ToString();
+        }
     }
 }
