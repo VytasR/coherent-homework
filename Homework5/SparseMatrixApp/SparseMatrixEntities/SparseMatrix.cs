@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SparseMatrixApp.SparseMatrixEntity
+namespace SparseMatrixApp.SparseMatrixEntities
 {
     internal class SparseMatrix
     {
