@@ -41,10 +41,7 @@ namespace SparseMatrixApp.SparseMatrixEntities
                 {
                     return _items[coordinates];
                 }
-                else
-                {
-                    return 0;
-                }
+                return 0;                
             }
             set
             {
