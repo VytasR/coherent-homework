@@ -128,15 +128,12 @@ namespace SparseMatrixApp.SparseMatrixEntities
                 return NumberOfRows * NumberOfColumns - _items.Count;
             }
             
-            int count = 0;
-            if (_items.ContainsValue(value))
+            int count = 0;            
+            foreach (var item in _items)
             {
-                foreach (var item in _items)
+                if (item.Value == value)
                 {
-                    if (item.Value == value)
-                    {
-                        count++;
-                    }
+                    count++;
                 }
             }
             return count;
