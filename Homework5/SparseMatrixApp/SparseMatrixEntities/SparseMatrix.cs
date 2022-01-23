@@ -121,5 +121,27 @@ namespace SparseMatrixApp.SparseMatrixEntities
                 yield return (item.Key.Row, item.Key.Column, item.Value);
             }
         }
+
+        // Returns the number of times an element occurs in matrix.
+        public int GetCount(int value)
+        {
+            if (value == 0)
+            {
+                return NumberOfRows * NumberOfColumns - _items.Count;
+            }
+            
+            int count = 0;
+            if (_items.ContainsValue(value))
+            {
+                foreach (var item in _items)
+                {
+                    if (item.Value == value)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
