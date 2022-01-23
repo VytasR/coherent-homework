@@ -8,6 +8,8 @@ namespace SparseMatrixApp.SparseMatrixEntities
 {
     internal class Coordinates
     {
+        // This class models coordinates of SparseMatrix items.
+
         public int Row { get; }
         public int Column { get; }
 

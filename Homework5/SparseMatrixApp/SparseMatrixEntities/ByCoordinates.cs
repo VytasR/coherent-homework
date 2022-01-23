@@ -8,6 +8,7 @@ namespace SparseMatrixApp.SparseMatrixEntities
 {
     internal class ByCoordinates : IComparer<Coordinates>
     {
+        // This class implements IComparer so that Coordinate objects are sorted by columns first then by rows
         public int Compare(Coordinates x, Coordinates y)
         {
             if (x.Column.CompareTo(y.Column) != 0)

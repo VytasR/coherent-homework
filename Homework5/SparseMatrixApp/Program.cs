@@ -10,6 +10,7 @@ namespace SparseMatrixApp
     internal class Program
     {
         // This program demonstrates usage of SparseMatrix class
+
         static void Main(string[] args)
         {
             var matrix1 = new SparseMatrix(3, 4);

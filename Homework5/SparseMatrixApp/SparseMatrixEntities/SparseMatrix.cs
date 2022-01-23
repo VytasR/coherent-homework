@@ -97,6 +97,7 @@ namespace SparseMatrixApp.SparseMatrixEntities
             return result.ToString();
         }
 
+        // Returns all elements of sparse matrix (including zero ones) line by line.
         public IEnumerator<int> GetEnumerator()
         {
             for (int row = 0; row < NumberOfRows; row++)
