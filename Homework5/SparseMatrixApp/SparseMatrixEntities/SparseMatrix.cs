@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SparseMatrixApp.SparseMatrixEntities
 {
-    internal class SparseMatrix
+    internal class SparseMatrix : IEnumerable<int>
     {
         public int NumberOfRows { get; }
         public int NumberOfColumns { get; }
@@ -94,6 +95,22 @@ namespace SparseMatrixApp.SparseMatrixEntities
                 }
             }
             return result.ToString();
+        }
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            for (int row = 0; row < NumberOfRows; row++)
+            {
+                for (int column = 0; column < NumberOfColumns; column++)
+                {
+                    yield return this[row, column];
+                }
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }
