@@ -11,5 +11,12 @@ namespace SparseMatrixApp.SparseMatrixEntities
         public int NumberOfRows { get; }
         public int NumberOfColumns { get; }
         private SortedSet<MatrixItem> _items;
+
+        public SparseMatrix (int numberOfRows, int numberOfColumns)
+        {
+            NumberOfRows = numberOfRows;
+            NumberOfColumns = numberOfColumns;
+            _items = new SortedSet<MatrixItem>();
+        }
     }
 }
