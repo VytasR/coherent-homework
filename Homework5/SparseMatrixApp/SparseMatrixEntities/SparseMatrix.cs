@@ -23,7 +23,7 @@ namespace SparseMatrixApp.SparseMatrixEntities
             {
                 NumberOfRows = numberOfRows;
                 NumberOfColumns = numberOfColumns;
-                _items = new SortedList<Coordinates, int>(new ByCoordinates());
+                _items = new SortedList<Coordinates, int>(new ByColumnFirst());
             }
         }
 
