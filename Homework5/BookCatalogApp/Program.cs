@@ -13,11 +13,13 @@ namespace BookCatalogApp
         {
             var book1 = new Book("First title");
             var book2 = new Book("Second title");
+            var book3 = new Book("Third title");
 
             var catalog = new Catalog();
 
-            catalog.AddBook("0123456789012", book1);
-            catalog.AddBook("012-3-45-678901-2", book2);
+            catalog.AddBook("312-3-45-678901-3", book1);
+            catalog.AddBook("3123456789012", book2);
+            catalog.AddBook("111-2-45-666666-7", book3);            
         }
     }
 }
