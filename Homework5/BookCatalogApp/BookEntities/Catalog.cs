@@ -30,6 +30,17 @@ namespace BookCatalogApp.BookEntities
             }           
         }
 
+        // Retrieves a book from the catalogue to given ISBN number.
+        public Book GetBook(string iSBN)
+        {
+            var formattedISBN = FormatISBN(iSBN);
+
+            Book result = null;
+            books.TryGetValue(formattedISBN, out result);
+                       
+            return result;
+        }
+
         // Formats input string to 13 digit ISBN string.
         public string FormatISBN(string iSBN)
         {            
