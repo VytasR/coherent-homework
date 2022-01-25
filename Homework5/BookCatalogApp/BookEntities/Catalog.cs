@@ -27,26 +27,22 @@ namespace BookCatalogApp.BookEntities
             else
             {
                 throw new ArgumentException("ISBN number already in catalog.");
-            }
-           
+            }           
         }
 
         // Formats input string to 13 digit ISBN string.
         public string FormatISBN(string iSBN)
-        {
-            var newISBN = String.Empty;
+        {            
             var digitsOnly = new Regex(@"^\d{13}$");
-            var digitsWithHyphens = new Regex(@"^\d{3}-\d-\d{2}-\d{6}-\d$");
-            var matchDigitsOnly = digitsOnly.Match(iSBN);
-            var matchDigitsWithHyphens = digitsWithHyphens.Match(iSBN);
+            var digitsWithHyphens = new Regex(@"^\d{3}-\d-\d{2}-\d{6}-\d$");            
 
-            if (matchDigitsOnly.Success)
+            if (digitsOnly.Match(iSBN).Success)
             {
-                return matchDigitsOnly.Value;
+                return iSBN;
             }
-            else if (matchDigitsWithHyphens.Success)
+            else if (digitsWithHyphens.Match(iSBN).Success)
             {
-                return matchDigitsWithHyphens.Value.Replace("-", String.Empty);
+                return iSBN.Replace("-", String.Empty);
             }
             else
             {
