@@ -11,10 +11,8 @@ namespace BookCatalogApp.BookEntities
         private string _title;
         public string Title 
         {
-            get
-            {
-                return _title;
-            }
+            get => _title;
+            
             set
             {
                 if (String.IsNullOrEmpty(value))
@@ -25,7 +23,7 @@ namespace BookCatalogApp.BookEntities
             } 
         }
         public string PublicationDate { get; set; }
-        public HashSet<string> Authors { get; set; }
+        private HashSet<string> _authors;
 
         public Book(string title)
         {
@@ -34,7 +32,7 @@ namespace BookCatalogApp.BookEntities
                 throw new ArgumentException("Invalid book title. Must be not null and not empty.");
             }
             Title = title;
-            Authors = new HashSet<string>();
+            _authors = new HashSet<string>();
         }
 
         public Book(string title, string publicationDate) : this(title)
@@ -44,7 +42,12 @@ namespace BookCatalogApp.BookEntities
 
         public bool AddAuthor(string author)
         {
-            return Authors.Add(author);
+            return _authors.Add(author);
+        }
+
+        public bool RemoveAuthor(string author)
+        {
+            return _authors.Remove(author);
         }
     }
 }
