@@ -14,5 +14,10 @@ namespace VacationsApp.CompanyEntities
         {
             _vacations = new List<Vacation>();
         }
+
+        public void AddVacation(Vacation newVacation)
+        {
+            _vacations.Add(newVacation);
+        }
     }
 }
