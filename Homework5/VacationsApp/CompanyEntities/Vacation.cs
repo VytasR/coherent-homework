@@ -11,5 +11,12 @@ namespace VacationsApp.CompanyEntities
         public string EmployeeName { get; }
         public DateTime FirstDay { get; }
         public DateTime LastDay { get; }
+
+        public Vacation(string employeeName, DateTime firstDay, DateTime lastDay)
+        {
+            EmployeeName = employeeName;
+            FirstDay = firstDay;
+            LastDay = lastDay;
+        }
     }
 }
