@@ -9,56 +9,51 @@ namespace BookCatalogApp.BookEntities
 {
     internal class Catalog
     {
-        private SortedDictionary<string, Book> books;
+        // This class models a book catalog.
+
+        private SortedDictionary<string, Book> _books;
 
         public Catalog()
         {
-            books = new SortedDictionary<string, Book>();
+            _books = new SortedDictionary<string, Book>();
         }
 
+        // Adds a book to the catalog.
         public void AddBook(string iSBN, Book newBook)
-        {
-            var newISBN = FormatISBN(iSBN);            
-                       
-            if (!books.ContainsKey(newISBN))
+        {            
+            if (IsISBNFormatCorrect(iSBN))
             {
-                books.Add(newISBN, newBook);
+                var newISBN = iSBN.Replace("-", String.Empty);
+                _books.Add(newISBN, newBook);                
             }
             else
             {
-                throw new ArgumentException("ISBN number already in catalog.");
-            }           
+                throw new ArgumentException("Invalid ISBN format.");
+            }
         }
 
-        // Retrieves a book from the catalogue to given ISBN number.
+        // Inputs ISBN identifier and outputs a Book object.
         public Book GetBook(string iSBN)
-        {
-            var formattedISBN = FormatISBN(iSBN);
-
-            Book result = null;
-            books.TryGetValue(formattedISBN, out result);
-                       
-            return result;
+        {            
+            if (IsISBNFormatCorrect(iSBN))
+            {
+                Book result = null;
+                _books.TryGetValue(iSBN.Replace("-", String.Empty), out result);
+                return result;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid ISBN format.");
+            }            
         }
 
-        // Formats input string to 13 digit ISBN string.
-        public string FormatISBN(string iSBN)
+        // Checks if input string matches ISBN 13 digit format. Returns true if it does.
+        private bool IsISBNFormatCorrect(string iSBN)
         {            
             var digitsOnly = new Regex(@"^\d{13}$");
-            var digitsWithHyphens = new Regex(@"^\d{3}-\d-\d{2}-\d{6}-\d$");            
+            var digitsWithHyphens = new Regex(@"^\d{3}-\d-\d{2}-\d{6}-\d$");
 
-            if (digitsOnly.Match(iSBN).Success)
-            {
-                return iSBN;
-            }
-            else if (digitsWithHyphens.Match(iSBN).Success)
-            {
-                return iSBN.Replace("-", String.Empty);
-            }
-            else
-            {
-                throw new ArgumentException("Invalid ISBN number format.");
-            }            
+            return digitsOnly.Match(iSBN).Success || digitsWithHyphens.Match(iSBN).Success;                 
         }
     }
 }
