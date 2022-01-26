@@ -19,5 +19,10 @@ namespace VacationsApp.CompanyEntities
         {
             _vacations.Add(newVacation);
         }
+
+        public double GetAverageVacationLength()
+        {
+            return  _vacations.Average(x => x.GetLength());            
+        }
     }
 }

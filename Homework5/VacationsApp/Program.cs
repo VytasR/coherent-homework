@@ -13,7 +13,7 @@ namespace VacationsApp
         {
             var company = new Company();
 
-            var vacation1 = new Vacation("Joe", new DateTime(2021, 1, 1), new DateTime(2021, 1, 10));
+            var vacation1 = new Vacation("Joe", new DateTime(2021, 1, 1), new DateTime(2021, 1, 11));
             var vacation2 = new Vacation("joe", new DateTime(2021, 7, 15), new DateTime(2021, 7, 30));
             var vacation3 = new Vacation("Dave", new DateTime(2021, 6, 24), new DateTime(2021, 7, 12));
             var vacation4 = new Vacation("Chris", new DateTime(2021, 4, 1), new DateTime(2021, 4, 5));
@@ -26,8 +26,11 @@ namespace VacationsApp
             company.AddVacation(vacation3);
             company.AddVacation(vacation4);
             company.AddVacation(vacation5);
-            company.AddVacation(vacation6);
-            company.AddVacation(vacation7); 
+            //company.AddVacation(vacation6);
+            //company.AddVacation(vacation7);
+                        
+            var averageVacationLength = company.GetAverageVacationLength();
+
         }
     }
 }

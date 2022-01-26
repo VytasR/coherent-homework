@@ -18,5 +18,10 @@ namespace VacationsApp.CompanyEntities
             FirstDay = firstDay;
             LastDay = lastDay;
         }
+
+        public double GetLength()
+        {
+            return (LastDay - FirstDay).Days + 1;
+        }
     }
 }
