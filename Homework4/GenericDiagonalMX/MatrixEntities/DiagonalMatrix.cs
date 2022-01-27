@@ -54,11 +54,12 @@ namespace GenericDiagonalMX.MatrixEntities
                 }
                 else if (row == column)
                 {
-                    if (!_diagonalElements[row].Equals(value))
-                    {                        
-                        ElementChanged?.Invoke(this, new MatrixElementChangedArgs<T>(row, column, _diagonalElements[row], value));
-                    }                    
-                   _diagonalElements[row] = value;
+                    var oldValue = _diagonalElements[row];
+                    _diagonalElements[row] = value;
+                    if (!oldValue.Equals(value))
+                    {
+                        ElementChanged?.Invoke(this, new MatrixElementChangedArgs<T>(row, column, oldValue, value));
+                    }
                 }                
             }
         }
