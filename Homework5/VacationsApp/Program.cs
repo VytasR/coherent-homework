@@ -14,7 +14,7 @@ namespace VacationsApp
             var company = new Company();
 
             var vacation1 = new Vacation("Joe", new DateTime(2021, 1, 1), new DateTime(2021, 1, 11));
-            var vacation2 = new Vacation("joe", new DateTime(2021, 7, 15), new DateTime(2021, 7, 30));
+            var vacation2 = new Vacation("Joe", new DateTime(2021, 7, 15), new DateTime(2021, 7, 30));
             var vacation3 = new Vacation("Dave", new DateTime(2021, 6, 24), new DateTime(2021, 7, 12));
             var vacation4 = new Vacation("Chris", new DateTime(2021, 4, 1), new DateTime(2021, 4, 5));
             var vacation5 = new Vacation("Bill", new DateTime(2021, 9, 1), new DateTime(2021, 9, 16));
@@ -26,11 +26,28 @@ namespace VacationsApp
             company.AddVacation(vacation3);
             company.AddVacation(vacation4);
             company.AddVacation(vacation5);
-            //company.AddVacation(vacation6);
-            //company.AddVacation(vacation7);
+            company.AddVacation(vacation6);
+            company.AddVacation(vacation7);
                         
             var averageVacationLength = company.GetAverageVacationLength();
 
+            Console.WriteLine("Average length of vacation in the organization was {0} days", averageVacationLength);
+
+            /*var vacationList = new List<Vacation>();
+            vacationList.Add(vacation1);
+            vacationList.Add(vacation2);
+            vacationList.Add(vacation3);
+            vacationList.Add(vacation4);
+            vacationList.Add(vacation5);
+            vacationList.Add(vacation6);
+            vacationList.Add(vacation7);*/
+
+            Console.WriteLine("--------------------------------");
+
+            foreach (var item in company.GetAverageVacationLengthPerEmployee())
+            {
+                Console.WriteLine("{0} had average vacation length of {1} days", item.Item1, item.Item2);
+            }
         }
     }
 }

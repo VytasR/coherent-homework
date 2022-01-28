@@ -27,7 +27,15 @@ namespace VacationsApp.CompanyEntities
 
         public IEnumerable<(string, double)> GetAverageVacationLengthPerEmployee()
         {
-            return _vacations.Select(x => (x.EmployeeName, (double)(x.LastDay - x.FirstDay).Days + 1)).ToList();
+            var vacationGroupsByEmployeeName = from vacation in _vacations
+                                               group vacation by vacation.EmployeeName into employeeVacations
+                                               orderby employeeVacations.Key
+                                               select new { employeeVacations.Key, employeeVacations };
+
+            foreach (var group in vacationGroupsByEmployeeName)
+            {                
+                yield return (group.Key, group.employeeVacations.Average(x => x.GetLength()));
+            }
         }
     }
 }
