@@ -20,6 +20,8 @@ namespace VacationsApp
             var vacation5 = new Vacation("Bill", new DateTime(2021, 9, 1), new DateTime(2021, 9, 16));
             var vacation6 = new Vacation("Bill", new DateTime(2021, 12, 23), new DateTime(2021, 12, 31));
             var vacation7 = new Vacation("Kevin", new DateTime(2021, 8, 15), new DateTime(2021, 8, 22));
+            var vacation8 = new Vacation("Joe", new DateTime(2021, 1, 22), new DateTime(2021, 1, 25));
+            var vacation9 = new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6));
 
             company.AddVacation(vacation1);
             company.AddVacation(vacation2);
@@ -28,10 +30,12 @@ namespace VacationsApp
             company.AddVacation(vacation5);
             company.AddVacation(vacation6);
             company.AddVacation(vacation7);
-                        
+            company.AddVacation(vacation8);
+            company.AddVacation(vacation9);
+
             var averageVacationLength = company.GetAverageVacationLength();
 
-            Console.WriteLine("Average length of vacation in the organization was {0} days", averageVacationLength);
+            Console.WriteLine("Average length of vacation in the organization was {0:F1} days", averageVacationLength);
 
             /*var vacationList = new List<Vacation>();
             vacationList.Add(vacation1);
@@ -45,13 +49,23 @@ namespace VacationsApp
             Console.WriteLine("--------------------------------");
             foreach (var item in company.GetAverageVacationLengthPerEmployee())
             {
-                Console.WriteLine("{0} had average vacation length of {1} days", item.Item1, item.Item2);
+                Console.WriteLine("{0} had average vacation length of {1:F1} days", item.Item1, item.Item2);
             }
 
             Console.WriteLine("--------------------------------");
             foreach (var item in company.GetMonthsEmployeesOnVacation())
             {
-                Console.WriteLine("{0} month {1} employee(s) were on vacation", item.Item1, item.Item2);
+                Console.WriteLine("{0} month {1} employee(s) were on vacation", item.Item1, item.Item2 > 0 ? item.Item2.ToString() : "no");
+            }
+
+            Console.WriteLine("--------------------------------");
+            var firstDay = new DateTime(2021, 6, 1);
+            var lastDay = new DateTime(2021, 7, 31);
+            Console.WriteLine($"From {firstDay.ToShortDateString()} to {lastDay.ToShortDateString()} " +
+                              $"employees did not take vacations on these dates:");
+            foreach (var date in company.GetDatesWithoutVacations(firstDay, lastDay))
+            {
+                Console.WriteLine(date.ToShortDateString());
             }
         }
     }

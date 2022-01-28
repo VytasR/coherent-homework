@@ -60,11 +60,7 @@ namespace VacationsApp.CompanyEntities
                 employeeVacationMonths.Add((group.Key, vacationMonths));
             }
                         
-            var months = new List<int>();
-            for (int month = 1; month <= 12; month++)
-            {
-                months.Add(month);
-            }                
+            var months = Enumerable.Range(1, 12).ToList();
 
             var result = new List<(int, int)>();
 
@@ -81,6 +77,23 @@ namespace VacationsApp.CompanyEntities
                 result.Add((month, numberOfEmployeesOnVacation));
             }                
 
+            return result;
+        }
+
+        // Inputs date range and outputs a list of days in that range on which employees did not take vacations.
+        public IEnumerable<DateTime> GetDatesWithoutVacations(DateTime firstDay, DateTime lastDay)
+        {            
+            var result = Enumerable.Range(0, 1 + (lastDay - firstDay).Days).Select(offset => firstDay.AddDays(offset)).ToList();
+
+            foreach (var vacation in _vacations)
+            {
+                var vacationDates = Enumerable.Range(0, 1 + (vacation.LastDay - vacation.FirstDay).Days).Select(offset => vacation.FirstDay.AddDays(offset)).ToList();
+                foreach (var date in vacationDates)
+                {
+                    result.Remove(date);
+                }
+            }
+            
             return result;
         }
     }
