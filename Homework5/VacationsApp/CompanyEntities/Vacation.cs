@@ -14,6 +14,10 @@ namespace VacationsApp.CompanyEntities
 
         public Vacation(string employeeName, DateTime firstDay, DateTime lastDay)
         {
+            if (firstDay > lastDay)
+            {
+                throw new ArgumentException("First day of vacation can not come later than last day.");
+            }
             EmployeeName = employeeName;
             FirstDay = firstDay;
             LastDay = lastDay;
