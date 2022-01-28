@@ -43,10 +43,15 @@ namespace VacationsApp
             vacationList.Add(vacation7);*/
 
             Console.WriteLine("--------------------------------");
-
             foreach (var item in company.GetAverageVacationLengthPerEmployee())
             {
                 Console.WriteLine("{0} had average vacation length of {1} days", item.Item1, item.Item2);
+            }
+
+            Console.WriteLine("--------------------------------");
+            foreach (var item in company.GetMonthsEmployeesOnVacation())
+            {
+                Console.WriteLine("{0} month {1} employee(s) were on vacation", item.Item1, item.Item2);
             }
         }
     }
