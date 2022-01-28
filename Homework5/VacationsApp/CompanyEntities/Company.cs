@@ -118,8 +118,11 @@ namespace VacationsApp.CompanyEntities
                     {
                         if (vacationToCompare.FirstDay > firstDay && vacationToCompare.FirstDay <= lastDay ||
                             vacationToCompare.FirstDay <= lastDay && vacationToCompare.LastDay > lastDay)
-                        {
-                            result.Add((vacationToCompare, vacation));                            
+                        {                            
+                            if (!result.Contains((vacation, vacationToCompare)))
+                            {
+                                result.Add((vacationToCompare, vacation));
+                            }                                                        
                         }
                     }
                 }
