@@ -13,14 +13,14 @@ namespace VacationsApp
         {
             var company = new Company();
 
-            var vacation1 = new Vacation("Joe", new DateTime(2021, 1, 1), new DateTime(2021, 1, 11));
+            var vacation1 = new Vacation("Joe", new DateTime(2021, 1, 3), new DateTime(2021, 1, 11));
             var vacation2 = new Vacation("Joe", new DateTime(2021, 7, 15), new DateTime(2021, 7, 30));
             var vacation3 = new Vacation("Dave", new DateTime(2021, 6, 24), new DateTime(2021, 7, 12));
             var vacation4 = new Vacation("Chris", new DateTime(2021, 4, 1), new DateTime(2021, 4, 5));
             var vacation5 = new Vacation("Bill", new DateTime(2021, 9, 1), new DateTime(2021, 9, 16));
             var vacation6 = new Vacation("Bill", new DateTime(2021, 12, 23), new DateTime(2021, 12, 31));
             var vacation7 = new Vacation("Kevin", new DateTime(2021, 8, 15), new DateTime(2021, 8, 22));
-            var vacation8 = new Vacation("Joe", new DateTime(2021, 1, 22), new DateTime(2021, 1, 25));
+            var vacation8 = new Vacation("Joe", new DateTime(2021, 1, 5), new DateTime(2021, 1, 10));
             var vacation9 = new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6));
 
             company.AddVacation(vacation1);
@@ -36,16 +36,7 @@ namespace VacationsApp
             var averageVacationLength = company.GetAverageVacationLength();
 
             Console.WriteLine("Average length of vacation in the organization was {0:F1} days", averageVacationLength);
-
-            /*var vacationList = new List<Vacation>();
-            vacationList.Add(vacation1);
-            vacationList.Add(vacation2);
-            vacationList.Add(vacation3);
-            vacationList.Add(vacation4);
-            vacationList.Add(vacation5);
-            vacationList.Add(vacation6);
-            vacationList.Add(vacation7);*/
-
+                        
             Console.WriteLine("--------------------------------");
             foreach (var item in company.GetAverageVacationLengthPerEmployee())
             {
@@ -66,6 +57,13 @@ namespace VacationsApp
             foreach (var date in company.GetDatesWithoutVacations(firstDay, lastDay))
             {
                 Console.WriteLine(date.ToShortDateString());
+            }
+
+            Console.WriteLine("--------------------------------");            
+            foreach (var entry in company.GetIncorrectVacationEntries())
+            {
+                Console.WriteLine($"{entry.Item1.EmployeeName} vacation from {entry.Item1.FirstDay.ToShortDateString()} to {entry.Item1.LastDay.ToShortDateString()}" +
+                                  $" intersects with {entry.Item2.EmployeeName} vacation from {entry.Item2.FirstDay.ToShortDateString()} to {entry.Item2.LastDay.ToShortDateString()}");
             }
         }
     }

@@ -96,5 +96,35 @@ namespace VacationsApp.CompanyEntities
             
             return result;
         }
+
+        // Returns a set of pairs of vacation records in which the names of the employee are the same, and the dates of two holidays intersect.
+        public IEnumerable<(Vacation, Vacation)> GetIncorrectVacationEntries()
+        {            
+            var result = new List<(Vacation, Vacation)>();
+
+            var vacationGroupsByEmployeeName = from vacation in _vacations
+                                               group vacation by vacation.EmployeeName into employeeVacations
+                                               orderby employeeVacations.Key
+                                               select new { employeeVacations.Key, employeeVacations };
+
+            foreach (var group in vacationGroupsByEmployeeName)
+            {
+                foreach (var vacation in group.employeeVacations)
+                {
+                    var firstDay = vacation.FirstDay;
+                    var lastDay = vacation.LastDay;
+
+                    foreach (var vacationToCompare in group.employeeVacations)
+                    {
+                        if (vacationToCompare.FirstDay > firstDay && vacationToCompare.FirstDay <= lastDay ||
+                            vacationToCompare.FirstDay <= lastDay && vacationToCompare.LastDay > lastDay)
+                        {
+                            result.Add((vacationToCompare, vacation));                            
+                        }
+                    }
+                }
+            }
+            return result;
+        }
     }
 }
