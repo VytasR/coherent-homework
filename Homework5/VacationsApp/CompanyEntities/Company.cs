@@ -44,40 +44,30 @@ namespace VacationsApp.CompanyEntities
         // It is considered that an employee was on vacation in a certain month if he spent 1 or more days on vacation that month.
         public IEnumerable<(int, int)> GetMonthsEmployeesOnVacation()
         {
-            var vacationGroupsByEmployeeName = from vacation in _vacations
-                                               group vacation by vacation.EmployeeName into employeeVacations
+            var vacationMonthsByEmployeeName = from vacation in _vacations
+                                               group (vacation.FirstDay.Month, vacation.LastDay.Month) by vacation.EmployeeName into employeeVacations
                                                orderby employeeVacations.Key
                                                select new { employeeVacations.Key, employeeVacations };
 
-            var employeeVacationMonths = new List<(string, HashSet<int>)>();
-
-            foreach (var group in vacationGroupsByEmployeeName)
-            {
-                var vacationMonths = new HashSet<int>();
-                foreach(var vacation in group.employeeVacations)
-                {
-                    vacationMonths.Add(vacation.FirstDay.Month);
-                    vacationMonths.Add(vacation.LastDay.Month);
-                }
-                employeeVacationMonths.Add((group.Key, vacationMonths));
-            }
-                        
-            var months = Enumerable.Range(1, 12).ToList();
-
+            var months = Enumerable.Range(1, 12).ToList(); ;
             var result = new List<(int, int)>();
 
             foreach (var month in months)
             {
-                int numberOfEmployeesOnVacation = 0;
-                foreach (var entry in employeeVacationMonths)
+                int numberOfEmployees = 0;
+                foreach (var group in vacationMonthsByEmployeeName)
                 {
-                    if (entry.Item2.Contains(month))
+                    foreach (var vacationMonths in group.employeeVacations)
                     {
-                        numberOfEmployeesOnVacation++;
-                    }                    
+                        if (vacationMonths.Item1 == month || vacationMonths.Item2 == month)
+                        {
+                            numberOfEmployees++;
+                            break;
+                        }
+                    }
                 }
-                result.Add((month, numberOfEmployeesOnVacation));
-            }                
+                result.Add((month, numberOfEmployees));
+            }           
 
             return result;
         }
