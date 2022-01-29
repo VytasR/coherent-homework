@@ -8,6 +8,8 @@ namespace VacationsApp.CompanyEntities
 {
     internal class Company
     {
+        // This class simulates a company with a list of employee vacations.
+
         private List<Vacation> _vacations;
 
         public Company()
@@ -20,11 +22,13 @@ namespace VacationsApp.CompanyEntities
             _vacations.Add(newVacation);
         }
 
+        // Returns average length of vacation in the organization.
         public double GetAverageVacationLength()
         {
             return  _vacations.Average(x => x.GetLength());            
         }
 
+        // Returns a set of tuples (employee name, average vacation length).
         public IEnumerable<(string, double)> GetAverageVacationLengthPerEmployee()
         {
             var vacationGroupsByEmployeeName = from vacation in _vacations
