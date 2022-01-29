@@ -78,12 +78,17 @@ namespace VacationsApp.CompanyEntities
             var result = Enumerable.Range(0, 1 + (lastDay - firstDay).Days).Select(offset => firstDay.AddDays(offset)).ToList();
 
             foreach (var vacation in _vacations)
-            {
-                var vacationDates = Enumerable.Range(0, 1 + (vacation.LastDay - vacation.FirstDay).Days).Select(offset => vacation.FirstDay.AddDays(offset)).ToList();
-                foreach (var date in vacationDates)
+            {   
+                if (vacation.FirstDay >= firstDay && vacation.FirstDay <= lastDay ||
+                    vacation.LastDay >= firstDay && vacation.LastDay <= lastDay)
                 {
-                    result.Remove(date);
-                }
+                    var date = vacation.FirstDay;
+                    while (date < vacation.LastDay.AddDays(1))
+                    {
+                        result.Remove(date);
+                        date = date.AddDays(1);
+                    }
+                }                
             }
             
             return result;
