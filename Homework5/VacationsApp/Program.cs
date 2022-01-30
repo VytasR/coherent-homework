@@ -22,6 +22,7 @@ namespace VacationsApp
             var vacation7 = new Vacation("Kevin", new DateTime(2021, 8, 15), new DateTime(2021, 8, 22));
             var vacation8 = new Vacation("Joe", new DateTime(2021, 1, 5), new DateTime(2021, 1, 10));
             var vacation9 = new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6));
+            var vacation10 = new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6));
 
             company.AddVacation(vacation1);
             company.AddVacation(vacation2);
@@ -32,6 +33,7 @@ namespace VacationsApp
             company.AddVacation(vacation7);
             company.AddVacation(vacation8);
             company.AddVacation(vacation9);
+            company.AddVacation(vacation10);
 
             var averageVacationLength = company.GetAverageVacationLength();
 
@@ -60,10 +62,10 @@ namespace VacationsApp
             }
 
             Console.WriteLine("--------------------------------");            
-            foreach (var entry in company.GetIncorrectVacationEntries())
+            foreach (var entry in company.GetOverlappingVacationEntries())
             {
                 Console.WriteLine($"{entry.Item1.EmployeeName} vacation from {entry.Item1.FirstDay.ToShortDateString()} to {entry.Item1.LastDay.ToShortDateString()}" +
-                                  $" intersects with {entry.Item2.EmployeeName} vacation from {entry.Item2.FirstDay.ToShortDateString()} to {entry.Item2.LastDay.ToShortDateString()}");
+                                  $" overlaps with {entry.Item2.EmployeeName} vacation from {entry.Item2.FirstDay.ToShortDateString()} to {entry.Item2.LastDay.ToShortDateString()}");
             }
         }
     }
