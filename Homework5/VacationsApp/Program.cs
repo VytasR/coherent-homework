@@ -9,6 +9,7 @@ namespace VacationsApp
 {
     internal class Program
     {
+        // This program demonstrates the use of Vacation class and vacation statistics in company.
         static void Main(string[] args)
         {
             var company = new Company();
@@ -22,7 +23,7 @@ namespace VacationsApp
             var vacation7 = new Vacation("Kevin", new DateTime(2021, 8, 15), new DateTime(2021, 8, 22));
             var vacation8 = new Vacation("Joe", new DateTime(2021, 1, 5), new DateTime(2021, 1, 10));
             var vacation9 = new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6));
-            var vacation10 = new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6));
+            var vacation10 = new Vacation("Angelina", new DateTime(2021, 8, 6), new DateTime(2021, 8, 6));
 
             company.AddVacation(vacation1);
             company.AddVacation(vacation2);
@@ -52,16 +53,27 @@ namespace VacationsApp
             }
 
             Console.WriteLine("--------------------------------");
-            var firstDay = new DateTime(2021, 6, 1);
-            var lastDay = new DateTime(2021, 7, 31);
+            var firstDay = new DateTime(2021, 1, 1);
+            var lastDay = new DateTime(2021, 12, 31);
             Console.WriteLine($"From {firstDay.ToShortDateString()} to {lastDay.ToShortDateString()} " +
                               $"employees did not take vacations on these dates:");
+            int counter = 0;            
             foreach (var date in company.GetDatesWithoutVacations(firstDay, lastDay))
             {
-                Console.WriteLine(date.ToShortDateString());
+                if (counter < 10)
+                {
+                    Console.Write(date.ToShortDateString() + "   ");
+                    counter++;
+                }
+                else
+                {
+                    counter = 0;
+                    Console.WriteLine();
+                }
+                
             }
 
-            Console.WriteLine("--------------------------------");            
+            Console.WriteLine("\n--------------------------------");            
             foreach (var entry in company.GetOverlappingVacationEntries())
             {
                 Console.WriteLine($"{entry.Item1.EmployeeName} vacation from {entry.Item1.FirstDay.ToShortDateString()} to {entry.Item1.LastDay.ToShortDateString()}" +

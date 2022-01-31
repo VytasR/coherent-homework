@@ -72,7 +72,7 @@ namespace VacationsApp.CompanyEntities
             return result;
         }
 
-        // Inputs date range and outputs a list of days in that range on which employees did not take vacations.
+        // Inputs a date range and outputs a list of days in that range on which employees did not take vacations.
         public IEnumerable<DateTime> GetDatesWithoutVacations(DateTime firstDay, DateTime lastDay)
         {            
             var result = Enumerable.Range(0, 1 + (lastDay - firstDay).Days).Select(offset => firstDay.AddDays(offset)).ToList();
@@ -83,7 +83,7 @@ namespace VacationsApp.CompanyEntities
                     vacation.LastDay >= firstDay && vacation.LastDay <= lastDay)
                 {
                     var date = vacation.FirstDay;
-                    while (date < vacation.LastDay.AddDays(1))
+                    while (date <= vacation.LastDay)
                     {
                         result.Remove(date);
                         date = date.AddDays(1);
@@ -94,7 +94,7 @@ namespace VacationsApp.CompanyEntities
             return result;
         }
 
-        // Returns a set of pairs of vacation records in which the names of the employee are the same, and the dates of two holidays intersect.
+        // Returns a set of pairs of vacation records in which the names of the employee are the same, and the dates of two holidays overlap.
         public IEnumerable<(Vacation, Vacation)> GetOverlappingVacationEntries()
         {            
             var result = new List<(Vacation, Vacation)>();
