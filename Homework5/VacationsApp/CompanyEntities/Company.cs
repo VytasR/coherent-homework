@@ -44,8 +44,7 @@ namespace VacationsApp.CompanyEntities
         public IEnumerable<(int, int)> GetMonthsEmployeesOnVacation()
         {
             var vacationMonthsByEmployeeName = from vacation in _vacations
-                                               group (vacation.FirstDay.Month, vacation.LastDay.Month) by vacation.EmployeeName into employeeVacations
-                                               orderby employeeVacations.Key
+                                               group (vacation.FirstDay.Month, vacation.LastDay.Month) by vacation.EmployeeName into employeeVacations                                              
                                                select new { employeeVacations.Key, employeeVacations };
 
             var months = Enumerable.Range(1, 12).ToList(); ;
