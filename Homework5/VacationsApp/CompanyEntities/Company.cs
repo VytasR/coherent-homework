@@ -29,15 +29,14 @@ namespace VacationsApp.CompanyEntities
         }
 
         // Returns a set of tuples (employee name, average vacation length).
-        public IEnumerable<Tuple<string, double>> GetAverageVacationLengthPerEmployee()
+        public IEnumerable<(string, double)> GetAverageVacationLengthPerEmployee()
         {
             var vacationGroupsByEmployeeName = from vacation in _vacations
-                                               group vacation.GetLength() by vacation.EmployeeName into vacationLengths
-                                               orderby vacationLengths.Key
+                                               group vacation.GetLength() by vacation.EmployeeName into vacationLengths                                               
                                                select new { vacationLengths.Key, vacationLengths };
-           
+            
             return vacationGroupsByEmployeeName.
-                    Select(group => new Tuple<string, double>(group.Key, group.vacationLengths.Average())).ToList();            
+                    Select(group => (group.Key, group.vacationLengths.Average())).OrderBy(group => group.Item2).ToList();            
         }
 
         // Returns a set of tuples "number of the month of the year - the number of employees on vacation this month".
