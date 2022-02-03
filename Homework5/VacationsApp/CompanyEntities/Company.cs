@@ -37,28 +37,22 @@ namespace VacationsApp.CompanyEntities
 
         // Returns a set of tuples "number of the month of the year - the number of employees on vacation this month".
         // It is considered that an employee was on vacation in a certain month if he spent 1 or more days on vacation that month.
-        public IEnumerable<(int, int)> GetMonthsEmployeesOnVacation()
-        {
-            var vacationMonthsByEmployeeName = from vacation in _vacations
-                                               group (vacation.FirstDay.Month, vacation.LastDay.Month) by vacation.EmployeeName into employeeVacations                                              
-                                               select new { employeeVacations.Key, employeeVacations };
-
-            var months = Enumerable.Range(1, 12).ToList(); ;
+        public IEnumerable<(int, int)> MonthsEmployeesOnVacation()
+        {            
+            var vacationMonthsByEmployee = _vacations.GroupBy(vacation => vacation.EmployeeName, vacation => new HashSet<int>() { vacation.FirstDay.Month, vacation.LastDay.Month }).
+                Select(group => (group.Key, group.Aggregate((x,y) => AddTwoHashSets(x, y))));           
+            var months = Enumerable.Range(1, 12).ToList();             
             var result = new List<(int, int)>();
 
             foreach (var month in months)
             {
                 int numberOfEmployees = 0;
-                foreach (var group in vacationMonthsByEmployeeName)
+                foreach (var item in vacationMonthsByEmployee)
                 {
-                    foreach (var vacationMonths in group.employeeVacations)
+                    if (item.Item2.Contains(month))
                     {
-                        if (vacationMonths.Item1 == month || vacationMonths.Item2 == month)
-                        {
-                            numberOfEmployees++;
-                            break;
-                        }
-                    }
+                        numberOfEmployees++;
+                    }                    
                 }
                 result.Add((month, numberOfEmployees));
             }           
@@ -118,6 +112,17 @@ namespace VacationsApp.CompanyEntities
             }
 
             return result;
+        }
+
+        // Inputs two hashsets. Returns a union.
+
+        private HashSet<int> AddTwoHashSets(HashSet<int> firstSet, HashSet<int> secondSet)
+        {
+            foreach (var item in secondSet)
+            {
+                firstSet.Add(item);
+            }
+            return firstSet;
         }
     }
 }

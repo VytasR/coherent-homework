@@ -47,7 +47,7 @@ namespace VacationsApp
             }
 
             Console.WriteLine("--------------------------------");
-            foreach (var item in company.GetMonthsEmployeesOnVacation())
+            foreach (var item in company.MonthsEmployeesOnVacation())
             {
                 Console.WriteLine("{0} month {1} employee(s) were on vacation", item.Item1, item.Item2 > 0 ? item.Item2.ToString() : "no");
             }
