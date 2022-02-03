@@ -58,7 +58,7 @@ namespace VacationsApp
             Console.WriteLine($"From {firstDay.ToShortDateString()} to {lastDay.ToShortDateString()} " +
                               $"employees did not take vacations on these dates:");
             int counter = 0;            
-            foreach (var date in company.GetDatesWithoutVacations(firstDay, lastDay))
+            foreach (var date in company.DatesWithoutVacations2021())
             {
                 if (counter < 10)
                 {

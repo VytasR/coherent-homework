@@ -60,26 +60,20 @@ namespace VacationsApp.CompanyEntities
             return result;
         }
 
-        // Inputs a date range and outputs a list of days in that range on which employees did not take vacations.
-        public IEnumerable<DateTime> GetDatesWithoutVacations(DateTime firstDay, DateTime lastDay)
-        {            
-            var result = Enumerable.Range(0, 1 + (lastDay - firstDay).Days).Select(offset => firstDay.AddDays(offset)).ToList();
+        // Outputs a list of days in year 2021 on which employees did not take vacations.
+        public IEnumerable<DateTime> DatesWithoutVacations2021()
+        {
+            var firstDay = new DateTime(2021, 1, 1);
+            var lastDay = new DateTime(2021, 12, 31);
+            var result = Enumerable.Range(0, 1 + (lastDay - firstDay).Days).Select(offset => firstDay.AddDays(offset));
 
             foreach (var vacation in _vacations)
-            {   
-                if (vacation.FirstDay >= firstDay && vacation.FirstDay <= lastDay ||
-                    vacation.LastDay >= firstDay && vacation.LastDay <= lastDay)
-                {
-                    var date = vacation.FirstDay;
-                    while (date <= vacation.LastDay)
-                    {
-                        result.Remove(date);
-                        date = date.AddDays(1);
-                    }
-                }                
+            {                
+                result = result.Except(Enumerable.Range(0, 1 + (vacation.LastDay - vacation.FirstDay).Days).
+                                                  Select(offset => vacation.FirstDay.AddDays(offset)));                     
             }
             
-            return result;
+            return result.ToList();
         }
 
         // Returns a set of pairs of vacation records in which the names of the employee are the same, and the dates of two holidays overlap.
