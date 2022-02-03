@@ -36,7 +36,7 @@ namespace VacationsApp
             company.AddVacation(vacation9);
             company.AddVacation(vacation10);
 
-            var averageVacationLength = company.GetAverageVacationLength();
+            var averageVacationLength = company.AverageVacationLength();
 
             Console.WriteLine("Average length of vacation in the organization was {0:F1} days", averageVacationLength);
                         

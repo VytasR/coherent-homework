@@ -23,7 +23,7 @@ namespace VacationsApp.CompanyEntities
         }
 
         // Returns average length of vacation in the organization.
-        public double GetAverageVacationLength()
+        public double AverageVacationLength()
         {
             return  _vacations.Average(x => x.GetLength());            
         }
