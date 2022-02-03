@@ -108,8 +108,7 @@ namespace VacationsApp.CompanyEntities
             return result;
         }
 
-        // Inputs two hashsets. Returns a union.
-
+        // Inputs two hashsets. Returns a union Hashset.
         private HashSet<int> AddTwoHashSets(HashSet<int> firstSet, HashSet<int> secondSet)
         {
             foreach (var item in secondSet)
