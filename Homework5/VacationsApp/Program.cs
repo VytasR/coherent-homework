@@ -41,7 +41,7 @@ namespace VacationsApp
             Console.WriteLine("Average length of vacation in the organization was {0:F1} days", averageVacationLength);
                         
             Console.WriteLine("--------------------------------");
-            foreach (var item in company.GetAverageVacationLengthPerEmployee())
+            foreach (var item in company.AverageVacationLengthPerEmployee())
             {
                 Console.WriteLine("{0} had average vacation length of {1:F1} days", item.Item1, item.Item2);
             }
