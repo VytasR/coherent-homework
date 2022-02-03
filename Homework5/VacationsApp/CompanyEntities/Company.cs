@@ -28,14 +28,14 @@ namespace VacationsApp.CompanyEntities
             return  _vacations.Average(vacation => vacation.GetLength());            
         }
 
-        // Returns a set of tuples (employee name, average vacation length).
+        // Returns a list of tuples (employee name, average vacation length), sorted by vacation length.
         public IEnumerable<(string, double)> AverageVacationLengthPerEmployee()
         {   
             return _vacations.GroupBy(vacation => vacation.EmployeeName, vacation => vacation.GetLength()).
                               Select(group => (group.Key, group.Average())).OrderBy(item => item.Item2).ToList();
         }
 
-        // Returns a set of tuples "number of the month of the year - the number of employees on vacation this month".
+        // Returns a list of tuples "number of the month of the year - the number of employees on vacation this month".
         // It is considered that an employee was on vacation in a certain month if he spent 1 or more days on vacation that month.
         public IEnumerable<(int, int)> MonthsEmployeesOnVacation()
         {            
@@ -76,7 +76,7 @@ namespace VacationsApp.CompanyEntities
             return result.ToList();
         }
 
-        // Returns a set of pairs of vacation records in which the names of the employee are the same
+        // Returns a list of pairs of vacation records in which the names of the employee are the same
         // and the dates of two holidays overlap, sorted by employee name.        
         public IEnumerable<(Vacation, Vacation)> OverlappingVacationEntries()
         {            
@@ -106,7 +106,7 @@ namespace VacationsApp.CompanyEntities
             return result.OrderBy(item => item.Item1.EmployeeName);
         }
 
-        // Inputs two hashsets. Returns a union Hashset.
+        // Inputs two hashsets. Returns first set with elements added from the second set.
         private HashSet<int> AddTwoHashSets(HashSet<int> firstSet, HashSet<int> secondSet)
         {
             foreach (var item in secondSet)
