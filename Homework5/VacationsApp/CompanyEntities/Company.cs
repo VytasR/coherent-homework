@@ -76,36 +76,34 @@ namespace VacationsApp.CompanyEntities
             return result.ToList();
         }
 
-        // Returns a set of pairs of vacation records in which the names of the employee are the same, and the dates of two holidays overlap.
-        public IEnumerable<(Vacation, Vacation)> GetOverlappingVacationEntries()
+        // Returns a set of pairs of vacation records in which the names of the employee are the same
+        // and the dates of two holidays overlap, sorted by employee name.        
+        public IEnumerable<(Vacation, Vacation)> OverlappingVacationEntries()
         {            
-            var result = new List<(Vacation, Vacation)>();
+            var result = new List<(Vacation, Vacation)>();            
+            var vacationGroupsbyEmployee = _vacations.GroupBy(vacation => vacation.EmployeeName).
+                                                      Select(vacation => new {vacation.Key, vacation});
 
-            var vacationGroupsByEmployeeName = from vacation in _vacations
-                                               group vacation by vacation.EmployeeName into employeeVacations
-                                               orderby employeeVacations.Key
-                                               select new { employeeVacations.Key, employeeVacations };
-
-            foreach (var group in vacationGroupsByEmployeeName)
+            foreach (var group in vacationGroupsbyEmployee)
             {
-                foreach (var vacation in group.employeeVacations)
+                foreach (var item in group.vacation)
                 {
-                    var firstDay = vacation.FirstDay;
-                    var lastDay = vacation.LastDay;
+                    var firstDay = item.FirstDay;
+                    var lastDay = item.LastDay;
 
-                    foreach (var vacationToCompare in group.employeeVacations)
+                    foreach (var vacationToCompare in group.vacation)
                     {
-                        if (vacation != vacationToCompare && !result.Contains((vacation, vacationToCompare)) &&
+                        if (item != vacationToCompare && !result.Contains((item, vacationToCompare)) &&
                            (vacationToCompare.FirstDay >= firstDay && vacationToCompare.FirstDay <= lastDay ||
                             vacationToCompare.LastDay >= firstDay && vacationToCompare.LastDay <= lastDay))
                         {
-                            result.Add((vacationToCompare, vacation));
+                            result.Add((vacationToCompare, item));
                         }                        
                     }
                 }
             }
 
-            return result;
+            return result.OrderBy(item => item.Item1.EmployeeName);
         }
 
         // Inputs two hashsets. Returns a union Hashset.

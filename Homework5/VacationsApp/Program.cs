@@ -74,7 +74,7 @@ namespace VacationsApp
             }
 
             Console.WriteLine("\n--------------------------------");            
-            foreach (var entry in company.GetOverlappingVacationEntries())
+            foreach (var entry in company.OverlappingVacationEntries())
             {
                 Console.WriteLine($"{entry.Item1.EmployeeName} vacation from {entry.Item1.FirstDay.ToShortDateString()} to {entry.Item1.LastDay.ToShortDateString()}" +
                                   $" overlaps with {entry.Item2.EmployeeName} vacation from {entry.Item2.FirstDay.ToShortDateString()} to {entry.Item2.LastDay.ToShortDateString()}");
