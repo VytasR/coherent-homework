@@ -38,26 +38,23 @@ namespace VacationsApp.CompanyEntities
         // Returns a list of tuples "number of the month of the year - the number of employees on vacation this month".
         // It is considered that an employee was on vacation in a certain month if he spent 1 or more days on vacation that month.
         public IEnumerable<(int, int)> MonthsEmployeesOnVacation()
-        {            
-            var vacationMonthsByEmployee = _vacations.GroupBy(vacation => vacation.EmployeeName, vacation => new HashSet<int>() { vacation.FirstDay.Month, vacation.LastDay.Month }).
-                Select(group => (group.Key, group.Aggregate((x,y) => AddTwoHashSets(x, y))));           
-            var months = Enumerable.Range(1, 12).ToList();             
-            var result = new List<(int, int)>();
-
-            foreach (var month in months)
+        {
+            var employeeVacationMonths = new HashSet<(string, int)>();
+            foreach (var vacation in _vacations)
             {
-                int numberOfEmployees = 0;
-                foreach (var item in vacationMonthsByEmployee)
-                {
-                    if (item.Item2.Contains(month))
-                    {
-                        numberOfEmployees++;
-                    }                    
-                }
-                result.Add((month, numberOfEmployees));
-            }           
+                employeeVacationMonths.Add((vacation.EmployeeName, vacation.FirstDay.Month));
+                employeeVacationMonths.Add((vacation.EmployeeName, vacation.LastDay.Month));
+            }   
 
-            return result;
+            var monthsNumberOfEmployees = employeeVacationMonths.GroupBy(entry => entry.Item2).Select(group => (group.Key, group.Count()));
+            var months = Enumerable.Range(1, 12); 
+            var result = from month in months
+                         join monthEmployees in monthsNumberOfEmployees
+                         on month equals monthEmployees.Key into leftJoin
+                         from entry in leftJoin.DefaultIfEmpty()
+                         select (month, entry.Item2);
+
+            return result.ToList();
         }
 
         // Outputs a list of days in year 2021 on which employees did not take vacations.
@@ -104,16 +101,6 @@ namespace VacationsApp.CompanyEntities
             }
 
             return result.OrderBy(item => item.Item1.EmployeeName);
-        }
-
-        // Inputs two hashsets. Returns first set with elements added from the second set.
-        private HashSet<int> AddTwoHashSets(HashSet<int> firstSet, HashSet<int> secondSet)
-        {
-            foreach (var item in secondSet)
-            {
-                firstSet.Add(item);
-            }
-            return firstSet;
         }
     }
 }
