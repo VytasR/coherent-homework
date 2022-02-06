@@ -114,7 +114,7 @@ namespace SparseMatrixApp.SparseMatrixEntities
         // Returns a set of touples (row, column, element value) ordered by columns then by rows.
         public IEnumerable<(int, int, int)> GetNonZeroElements()
         {            
-            return _items.Select(entry => (entry.Key.Row, entry.Key.Column, entry.Value)).ToList();
+            return _items.Select(entry => (entry.Key.Row, entry.Key.Column, entry.Value));
         }
 
         // Returns the number of times an element occurs in matrix.
