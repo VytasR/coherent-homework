@@ -22,7 +22,7 @@ namespace BookCatalogApp.BookEntities
                 _title = value;
             } 
         }
-        public string PublicationDate { get; set; }
+        public DateTime? PublicationDate { get; set; }
         private HashSet<string> _authors;
 
         public Book(string title)
@@ -35,7 +35,7 @@ namespace BookCatalogApp.BookEntities
             _authors = new HashSet<string>();
         }
 
-        public Book(string title, string publicationDate) : this(title)
+        public Book(string title, DateTime? publicationDate) : this(title)
         {
             PublicationDate = publicationDate;            
         }
