@@ -45,9 +45,13 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SparseMatrixEntities\ByColumnFirst.cs" />
+    <Compile Include="SparseMatrixEntities\Coordinates.cs" />
+    <Compile Include="SparseMatrixEntities\SparseMatrix.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
