@@ -79,22 +79,22 @@ namespace VacationsApp.CompanyEntities
         {            
             var result = new List<(Vacation, Vacation)>();            
             var vacationGroupsbyEmployee = _vacations.GroupBy(vacation => vacation.EmployeeName).
-                                                      Select(vacation => new {vacation.Key, vacation});
+                                                      Select(vacations => new {vacations.Key, vacations});
 
             foreach (var group in vacationGroupsbyEmployee)
             {
-                foreach (var item in group.vacation)
+                foreach (var vacation in group.vacations)
                 {
-                    var firstDay = item.FirstDay;
-                    var lastDay = item.LastDay;
+                    var firstDay = vacation.FirstDay;
+                    var lastDay = vacation.LastDay;
 
-                    foreach (var vacationToCompare in group.vacation)
+                    foreach (var vacationToCompare in group.vacations)
                     {
-                        if (item != vacationToCompare && !result.Contains((item, vacationToCompare)) &&
+                        if (vacation != vacationToCompare && !result.Contains((vacation, vacationToCompare)) &&
                            (vacationToCompare.FirstDay >= firstDay && vacationToCompare.FirstDay <= lastDay ||
                             vacationToCompare.LastDay >= firstDay && vacationToCompare.LastDay <= lastDay))
                         {
-                            result.Add((vacationToCompare, item));
+                            result.Add((vacationToCompare, vacation));
                         }                        
                     }
                 }
