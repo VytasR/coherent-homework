@@ -13,28 +13,17 @@ namespace VacationsApp
         static void Main(string[] args)
         {
             var company = new Company();
-
-            var vacation1 = new Vacation("Joe", new DateTime(2021, 1, 3), new DateTime(2021, 1, 11));
-            var vacation2 = new Vacation("Joe", new DateTime(2021, 7, 15), new DateTime(2021, 7, 30));
-            var vacation3 = new Vacation("Dave", new DateTime(2021, 6, 24), new DateTime(2021, 7, 12));
-            var vacation4 = new Vacation("Chris", new DateTime(2021, 4, 1), new DateTime(2021, 4, 5));
-            var vacation5 = new Vacation("Bill", new DateTime(2021, 9, 1), new DateTime(2021, 9, 16));
-            var vacation6 = new Vacation("Bill", new DateTime(2021, 12, 23), new DateTime(2021, 12, 31));
-            var vacation7 = new Vacation("Kevin", new DateTime(2021, 8, 15), new DateTime(2021, 8, 22));
-            var vacation8 = new Vacation("Joe", new DateTime(2021, 1, 5), new DateTime(2021, 1, 10));
-            var vacation9 = new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6));
-            var vacation10 = new Vacation("Angelina", new DateTime(2021, 8, 6), new DateTime(2021, 8, 6));
-
-            company.AddVacation(vacation1);
-            company.AddVacation(vacation2);
-            company.AddVacation(vacation3);
-            company.AddVacation(vacation4);
-            company.AddVacation(vacation5);
-            company.AddVacation(vacation6);
-            company.AddVacation(vacation7);
-            company.AddVacation(vacation8);
-            company.AddVacation(vacation9);
-            company.AddVacation(vacation10);
+                        
+            company.AddVacation(new Vacation("Joe", new DateTime(2021, 1, 3), new DateTime(2021, 1, 11)));
+            company.AddVacation(new Vacation("Joe", new DateTime(2021, 7, 15), new DateTime(2021, 7, 30)));
+            company.AddVacation(new Vacation("Dave", new DateTime(2021, 6, 24), new DateTime(2021, 7, 12)));
+            company.AddVacation(new Vacation("Chris", new DateTime(2021, 4, 1), new DateTime(2021, 4, 5)));
+            company.AddVacation(new Vacation("Bill", new DateTime(2021, 9, 1), new DateTime(2021, 9, 16)));
+            company.AddVacation(new Vacation("Bill", new DateTime(2021, 12, 23), new DateTime(2021, 12, 31)));
+            company.AddVacation(new Vacation("Kevin", new DateTime(2021, 8, 15), new DateTime(2021, 8, 22)));
+            company.AddVacation(new Vacation("Joe", new DateTime(2021, 1, 5), new DateTime(2021, 1, 10)));
+            company.AddVacation(new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6)));
+            company.AddVacation(new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6)));
 
             var averageVacationLength = company.AverageVacationLength();
 
