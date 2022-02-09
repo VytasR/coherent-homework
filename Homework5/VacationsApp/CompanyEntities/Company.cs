@@ -77,18 +77,18 @@ namespace VacationsApp.CompanyEntities
         // and the dates of two holidays overlap, sorted by employee name.        
         public IEnumerable<(Vacation, Vacation)> OverlappingVacationEntries()
         {
-            var newResult = from vacation in _vacations
-                            from vacationToCompare in _vacations
-                            where vacation != vacationToCompare &&
-                            vacation.EmployeeName == vacationToCompare.EmployeeName &&
-                            vacationToCompare.FirstDay <= vacation.LastDay &&
-                            vacationToCompare.LastDay >= vacation.FirstDay
-                            orderby vacation.EmployeeName
-                            select (vacation, vacationToCompare);
+            var overlappingEntries = from vacation in _vacations
+                                     from vacationToCompare in _vacations
+                                     where vacation != vacationToCompare &&
+                                     vacation.EmployeeName == vacationToCompare.EmployeeName &&
+                                     vacationToCompare.FirstDay <= vacation.LastDay &&
+                                     vacationToCompare.LastDay >= vacation.FirstDay
+                                     orderby vacation.EmployeeName
+                                     select (vacation, vacationToCompare);
                     
             var result = new List<(Vacation, Vacation)>();       
             
-            foreach (var vacationPair in newResult) 
+            foreach (var vacationPair in overlappingEntries) 
             {
                 if (!result.Contains((vacationPair.vacationToCompare, vacationPair.vacation)))
                 {
