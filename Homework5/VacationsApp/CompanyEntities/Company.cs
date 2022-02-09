@@ -76,31 +76,27 @@ namespace VacationsApp.CompanyEntities
         // Returns a list of pairs of vacation records in which the names of the employee are the same
         // and the dates of two holidays overlap, sorted by employee name.        
         public IEnumerable<(Vacation, Vacation)> OverlappingVacationEntries()
-        {            
-            var result = new List<(Vacation, Vacation)>();            
-            var vacationGroupsbyEmployee = _vacations.GroupBy(vacation => vacation.EmployeeName).
-                                                      Select(vacations => new {vacations.Key, vacations});
-
-            foreach (var group in vacationGroupsbyEmployee)
+        {
+            var newResult = from vacation in _vacations
+                            from vacationToCompare in _vacations
+                            where vacation != vacationToCompare &&
+                            vacation.EmployeeName == vacationToCompare.EmployeeName &&
+                            vacationToCompare.FirstDay <= vacation.LastDay &&
+                            vacationToCompare.LastDay >= vacation.FirstDay
+                            orderby vacation.EmployeeName
+                            select (vacation, vacationToCompare);
+                    
+            var result = new List<(Vacation, Vacation)>();       
+            
+            foreach (var vacationPair in newResult) 
             {
-                foreach (var vacation in group.vacations)
+                if (!result.Contains((vacationPair.vacationToCompare, vacationPair.vacation)))
                 {
-                    var firstDay = vacation.FirstDay;
-                    var lastDay = vacation.LastDay;
-
-                    foreach (var vacationToCompare in group.vacations)
-                    {
-                        if (vacation != vacationToCompare && !result.Contains((vacation, vacationToCompare)) &&
-                           (vacationToCompare.FirstDay >= firstDay && vacationToCompare.FirstDay <= lastDay ||
-                            vacationToCompare.LastDay >= firstDay && vacationToCompare.LastDay <= lastDay))
-                        {
-                            result.Add((vacationToCompare, vacation));
-                        }                        
-                    }
+                    result.Add(vacationPair);
                 }
-            }
+            }           
 
-            return result.OrderBy(item => item.Item1.EmployeeName);
+            return result;            
         }
     }
 }
