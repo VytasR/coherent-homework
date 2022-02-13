@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TrackingLib
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-    internal class TrackingPropertyAttribute : System.Attribute
+    public class TrackingPropertyAttribute : System.Attribute
     {
         public string PropertyName { get; }
 
