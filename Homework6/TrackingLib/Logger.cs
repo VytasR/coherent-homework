@@ -36,35 +36,34 @@ namespace TrackingLib
             }
 
             var jsonBuilder = new StringBuilder("{");
-            var firstEntry = true;
+            var isFirstElement = true;
 
             foreach (var propertyInfo in obj.GetType().GetProperties())
             {
-                var attribute = (TrackingPropertyAttribute)Attribute.GetCustomAttribute(propertyInfo, typeof(TrackingPropertyAttribute));
-                if (attribute != null)
-                {
-                    jsonBuilder.Append(firstEntry ? String.Empty : ",");
-                    jsonBuilder.Append($"\"{(attribute.PropertyName != null ? attribute.PropertyName : propertyInfo.Name)}\":");
-                    jsonBuilder.Append(JsonSerializer.Serialize(propertyInfo.GetValue(obj)));
-                    firstEntry = false;
-                }
+                AddJsonItem(ref isFirstElement, propertyInfo, propertyInfo.GetValue(obj), jsonBuilder);                
             }
 
             foreach (var fieldInfo in obj.GetType().GetFields())
             {
-                var attribute = (TrackingPropertyAttribute)Attribute.GetCustomAttribute(fieldInfo, typeof(TrackingPropertyAttribute));
-                if (attribute != null)
-                {
-                    jsonBuilder.Append(firstEntry ? String.Empty : ",");
-                    jsonBuilder.Append($"\"{(attribute.PropertyName != null ? attribute.PropertyName : fieldInfo.Name)}\":");
-                    jsonBuilder.Append(JsonSerializer.Serialize(fieldInfo.GetValue(obj)));
-                    firstEntry = false;
-                }
+                AddJsonItem(ref isFirstElement, fieldInfo, fieldInfo.GetValue(obj), jsonBuilder);                
             }
 
-            jsonBuilder.Append("}");
-            Console.WriteLine(jsonBuilder.ToString());
+            jsonBuilder.Append("}");            
             File.WriteAllText(FileName, jsonBuilder.ToString());
+        }
+
+        // Adds item to StringBuilder of JSON string.
+        private void AddJsonItem(ref bool isFirstElement, System.Reflection.MemberInfo memberInfo, object memberValue, StringBuilder jsonBuilder)
+        {
+            var attribute = (TrackingPropertyAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(TrackingPropertyAttribute));
+            if (attribute != null)
+            {
+                jsonBuilder.Append(isFirstElement ? String.Empty : ",");
+                jsonBuilder.Append($"\"{(attribute.PropertyName != null ? attribute.PropertyName : memberInfo.Name)}\":");
+                jsonBuilder.Append(JsonSerializer.Serialize(memberValue));
+                isFirstElement = false;
+            }
+            
         }
     }
 }
