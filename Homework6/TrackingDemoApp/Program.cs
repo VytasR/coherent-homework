@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrackingDemoApp.DemoEntities;
+using TrackingLib;
 
 namespace TrackingDemoApp
 {
@@ -16,6 +17,8 @@ namespace TrackingDemoApp
                                    new Pet() { Type = "cat", Name = "Max", Age = 7 } };
             var person = new Person() { FirstName = "Leonardo", LastName = "Green", Age = 35, Address = addres, _pets = pets };
 
+            var logger = new Logger("person.json");
+            logger.Track(person);
         }
     }
 }
