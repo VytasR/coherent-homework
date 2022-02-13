@@ -40,20 +40,20 @@ namespace TrackingLib
 
             foreach (var propertyInfo in obj.GetType().GetProperties())
             {
-                AddJsonItem(ref isFirstElement, propertyInfo, propertyInfo.GetValue(obj), jsonBuilder);                
+                AddJsonElement(ref isFirstElement, propertyInfo, propertyInfo.GetValue(obj), jsonBuilder);                
             }
 
             foreach (var fieldInfo in obj.GetType().GetFields())
             {
-                AddJsonItem(ref isFirstElement, fieldInfo, fieldInfo.GetValue(obj), jsonBuilder);                
+                AddJsonElement(ref isFirstElement, fieldInfo, fieldInfo.GetValue(obj), jsonBuilder);                
             }
 
             jsonBuilder.Append("}");            
             File.WriteAllText(FileName, jsonBuilder.ToString());
         }
 
-        // Adds item to StringBuilder of JSON string.
-        private void AddJsonItem(ref bool isFirstElement, System.Reflection.MemberInfo memberInfo, object memberValue, StringBuilder jsonBuilder)
+        // Adds element to StringBuilder of JSON string.
+        private void AddJsonElement(ref bool isFirstElement, System.Reflection.MemberInfo memberInfo, object memberValue, StringBuilder jsonBuilder)
         {
             var attribute = (TrackingPropertyAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(TrackingPropertyAttribute));
             if (attribute != null)
