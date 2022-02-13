@@ -24,6 +24,7 @@ namespace VacationsApp
             company.AddVacation(new Vacation("Joe", new DateTime(2021, 1, 5), new DateTime(2021, 1, 10)));
             company.AddVacation(new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6)));
             company.AddVacation(new Vacation("Angelina", new DateTime(2021, 7, 28), new DateTime(2021, 8, 6)));
+            company.AddVacation(new Vacation("Robert", new DateTime(2021, 1, 1), new DateTime(2021, 3, 1)));
 
             var averageVacationLength = company.AverageVacationLength();
 

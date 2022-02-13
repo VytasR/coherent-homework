@@ -42,8 +42,10 @@ namespace VacationsApp.CompanyEntities
             var employeeVacationMonths = new HashSet<(string, int)>();
             foreach (var vacation in _vacations)
             {
-                employeeVacationMonths.Add((vacation.EmployeeName, vacation.FirstDay.Month));
-                employeeVacationMonths.Add((vacation.EmployeeName, vacation.LastDay.Month));
+                for (var month = vacation.FirstDay.Month; month <= vacation.LastDay.Month; month++)
+                {
+                    employeeVacationMonths.Add((vacation.EmployeeName, month));
+                }               
             }   
 
             var monthsNumberOfEmployees = employeeVacationMonths.GroupBy(entry => entry.Item2).Select(group => (group.Key, group.Count()));
