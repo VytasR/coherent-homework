@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TrackingLib
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
-    internal class TrackingEntityAttribute : System.Attribute
+    public class TrackingEntityAttribute : System.Attribute
     {
     }
 }
