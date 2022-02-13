@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TrackingLib
 {
-    internal class Logger
+    public class Logger
     {
         // This class implements method for logging informaton about objects that have [TrackingEntity] attribute applied.
         public string FileName { get; }
